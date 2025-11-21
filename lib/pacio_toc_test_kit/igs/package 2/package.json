@@ -1,0 +1,42 @@
+{
+  "name" : "hl7.fhir.us.pacio-toc",
+  "version" : "1.0.0-ballot",
+  "tools-version" : 3,
+  "type" : "IG",
+  "date" : "20250328134636",
+  "license" : "CC0-1.0",
+  "canonical" : "http://hl7.org/fhir/us/pacio-toc",
+  "url" : "http://hl7.org/fhir/us/pacio-toc/2025May",
+  "title" : "PACIO Transitions of Care Implementation Guide",
+  "description" : "Implementation Guide for exchanging Transitions of Care minimum data set for patients transitioning between health organizations. (built Fri, Mar 28, 2025 13:46+0000+00:00)",
+  "fhirVersions" : ["4.0.1"],
+  "dependencies" : {
+    "hl7.fhir.r4.core" : "4.0.1",
+    "hl7.terminology.r4" : "6.2.0",
+    "hl7.fhir.uv.extensions.r4" : "5.2.0",
+    "hl7.fhir.us.pacio-adi" : "1.0.0",
+    "hl7.fhir.us.pacio-pfe" : "2.0.0-ballot",
+    "hl7.fhir.us.core" : "6.1.0",
+    "hl7.fhir.uv.ips" : "2.0.0-ballot",
+    "hl7.fhir.us.dental-data-exchange" : "1.0.0",
+    "hl7.fhir.us.ccda" : "2.0.0-ballot"
+  },
+  "author" : "HL7 International / Patient Care",
+  "maintainers" : [
+    {
+      "name" : "HL7 International / Patient Care",
+      "email" : "patientcare@lists.HL7.org",
+      "url" : "http://www.hl7.org/Special/committees/patientcare"
+    },
+    {
+      "name" : "PACIO project",
+      "email" : "info@pacioproject.org",
+      "url" : "http://www.hl7.org/Special/committees/patientcare"
+    }
+  ],
+  "directories" : {
+    "lib" : "package",
+    "example" : "example"
+  },
+  "jurisdiction" : "urn:iso:std:iso:3166#US"
+}

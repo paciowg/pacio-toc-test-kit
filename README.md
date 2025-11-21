@@ -1,6 +1,6 @@
-# Inferno Template Test Kit
+# Pacio TOC Test Kit Test Kit
 
-Inferno template [Inferno](https://github.com/inferno-community/inferno-core) Test Kit
+Pacio TOC test kit [Inferno](https://github.com/inferno-community/inferno-core) Test Kit
 for FHIR testing.
 
 ## Getting Started

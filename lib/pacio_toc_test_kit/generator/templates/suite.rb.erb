@@ -1,0 +1,78 @@
+require 'inferno/dsl/oauth_credentials'
+require_relative '../../version'
+require_relative '<%= capability_statement_file_name %>'
+<% group_file_list.each do |file_name| %>require_relative '<%= file_name %>'
+<% end %>
+module PacioTOCTestKit
+  module <%= module_name %>
+    class <%= class_name %> < Inferno::TestSuite
+      title '<%= title %>'
+      description %(
+        The Pacio TOC Server Test Kit tests server systems for their conformance to the [Pacio TOC
+        Implementation Guide](<%=ig_link %>).
+      )
+
+      GENERAL_MESSAGE_FILTERS = [].freeze
+<% if version_specific_message_filters.empty? %>
+      VERSION_SPECIFIC_MESSAGE_FILTERS = [].freeze
+<% else %>
+      VERSION_SPECIFIC_MESSAGE_FILTERS = [
+        <%= version_specific_message_filters.map { |filter| "%r{#{filter.source}}" }.join(",\n        ") %>
+      ].freeze
+<% end %>
+      VALIDATION_MESSAGE_FILTERS = GENERAL_MESSAGE_FILTERS + VERSION_SPECIFIC_MESSAGE_FILTERS
+
+      def self.metadata
+        @metadata ||= YAML.load_file(File.join(__dir__, 'metadata.yml'), aliases: true)[:groups].map do |raw_metadata|
+          Generator::GroupMetadata.new(raw_metadata)
+        end
+      end
+
+      id :<%= suite_id %>
+
+      fhir_resource_validator do
+        igs '<%= ig_identifier %>', 'hl7.fhir.us.core#6.1.0'
+        message_filters = VALIDATION_MESSAGE_FILTERS
+
+        exclude_message do |message|
+          message_filters.any? { |filter| filter.match? message.message }
+        end
+      end
+
+      input :url,
+            title: 'FHIR Endpoint',
+            description: 'URL of the FHIR endpoint'
+      input :smart_auth_info,
+            title: 'OAuth Credentials',
+            type: :auth_info,
+            optional: true
+
+      fhir_client do
+        url :url
+        auth_info :smart_auth_info
+      end
+
+      group from: :<%= capability_statement_group_id %>
+<% group_id_list.each do |id| %>
+      group from: :<%= id %><% end %>
+
+      links [
+        {
+          type: 'report_issue',
+          label: 'Report Issue',
+          url: 'https://github.com/paciowg/pacio-toc-test-kit/issues/'
+        },
+        {
+          type: 'source_code',
+          label: 'Open Source',
+          url: 'https://github.com/paciowg/pacio-toc-test-kit/'
+        },
+        {
+          type: 'download',
+          label: 'Download',
+          url: 'https://github.com/paciowg/pacio-toc-test-kit/releases/'
+        }
+      ]
+    end
+  end
+end

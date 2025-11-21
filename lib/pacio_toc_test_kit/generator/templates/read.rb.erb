@@ -1,0 +1,34 @@
+require_relative '../../../read_test'
+
+module PacioTOCTestKit
+  module <%= module_name %>
+    class <%= class_name %> < Inferno::Test
+      include PacioTOCTestKit::ReadTest
+
+      title 'Server returns correct <%= resource_type %> resource from <%= resource_type %> read interaction'
+      description 'A server <%= conformance_expectation %> support the <%= resource_type %> read interaction.'
+
+      id :<%= test_id %>
+<% if input_resource_id? %>
+      input :<%= resource_id_input_string %>,
+            title: 'ID(s) for <%= group_title %> resources present on the server.',
+            description: %(
+              Comma separated list of <%= group_title %> ids that in sum contain
+              all MUST SUPPORT elements
+            )<% if optional_profile? %>,
+            optional: true<% end %>
+<% end %>
+      def resource_type
+        '<%= resource_type %>'
+      end
+
+      def scratch_resources
+        scratch[:<%= profile_identifier %>_resources] ||= {}
+      end
+
+      run do
+        perform_read_test(<%= resource_collection_string %>)
+      end
+    end
+  end
+end

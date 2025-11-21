@@ -1,0 +1,31 @@
+<% test_file_list.each do |file_name| %>require_relative '<%= file_name %>'
+<% end %><% if class_name == 'ListGroup' %>require_relative '../../custom_groups/v1.0.0/operation_retrieve_test'
+require_relative '../../custom_groups/v1.0.0/operation_submit_test'
+<% end %>
+module PacioTOCTestKit
+  module <%= module_name %>
+    class <%= class_name %> < Inferno::TestGroup
+      title '<%= title %> Tests'
+      short_description <<~DESC
+        '<%= short_description %>'
+      DESC
+      description %(
+<%= description %>
+      )
+
+      id :<%= group_id %>
+      run_as_group<% if optional? %>
+      optional<% end %>
+
+      def self.metadata
+        @metadata ||= Generator::GroupMetadata.new(
+          YAML.load_file(File.join(__dir__, '<%= profile_identifier %>', 'metadata.yml'), aliases: true)
+        )
+      end
+<% test_id_list.each do |id| %>
+      test from: :<%= id %><% end %><% if class_name == 'ListGroup' %>
+      test from: :toc_v100_operation_retrieve_test, optional: true
+      test from: :toc_v100_operation_submit_test, optional: true<% end %>
+    end
+  end
+end

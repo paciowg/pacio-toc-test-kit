@@ -1,0 +1,18 @@
+{
+  "title": "Localhost",
+  "id": "toc-localhost",
+  "test_suite_id": "toc_v100",
+  "inputs": [
+    {
+      "name": "url",
+      "title": "FHIR Endpoint",
+      "description": "URL of the FHIR endpoint",
+      "type": "text",
+      "value": "http://localhost:8090/fhir"
+    },
+    {
+      "name": "patient_ids",
+      "value": "patient-betsysmith-johnson01"
+    }
+  ]
+}

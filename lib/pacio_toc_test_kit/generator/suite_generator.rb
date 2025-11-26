@@ -18,7 +18,7 @@ module PacioTOCTestKit
       end
 
       def module_name
-        "PacioSMP#{ig_metadata.reformatted_version.upcase}"
+        "PacioTOC#{ig_metadata.reformatted_version.upcase}"
       end
 
       def suite_id

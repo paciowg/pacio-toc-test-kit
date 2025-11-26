@@ -1,7 +1,7 @@
 require 'us_core_test_kit/validation_test'
 
 module PacioTOCTestKit
-  module PacioSMPV100
+  module PacioTOCV100
     class CompositionValidationTest < Inferno::Test
       include USCoreTestKit::ValidationTest
 

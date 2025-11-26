@@ -2,7 +2,7 @@ require_relative '../../../search_test'
 require_relative '../../../generator/group_metadata'
 
 module PacioTOCTestKit
-  module PacioSMPV100
+  module PacioTOCV100
     class PatientNameSearchTest < Inferno::Test
       include PacioTOCTestKit::SearchTest
 

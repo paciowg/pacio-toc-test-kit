@@ -1,7 +1,7 @@
 require 'us_core_test_kit/must_support_test'
 
 module PacioTOCTestKit
-  module PacioSMPV100
+  module PacioTOCV100
     class PatientMustSupportTest < Inferno::Test
       include USCoreTestKit::MustSupportTest
 

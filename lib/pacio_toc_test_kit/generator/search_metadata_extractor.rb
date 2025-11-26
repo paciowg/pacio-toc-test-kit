@@ -4,9 +4,15 @@ require_relative 'search_definition_metadata_extractor'
 module PacioTOCTestKit
   class Generator
     class SearchMetadataExtractor < USCoreTestKit::Generator::SearchMetadataExtractor
+      def no_search_params?
+        # TOC#1.0.0-ballot: do not search Bundle
+        resource_capabilities.searchParam.blank? || resource_capabilities.type == 'Bundle'
+      end
+
       def basic_searches
         result = super
         
+        # TOC#1.0.0-ballot: only add mandatory Patient search parameters
         case resource_capabilities.type
         when 'Patient' 
           result.delete_if { |r| r[:expectation] != 'SHALL' }

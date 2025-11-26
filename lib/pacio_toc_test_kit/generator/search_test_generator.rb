@@ -23,7 +23,7 @@ module PacioTOCTestKit
       end
 
       def module_name
-        "PacioSMP#{group_metadata.reformatted_version.upcase}"
+        "PacioTOC#{group_metadata.reformatted_version.upcase}"
       end
 
       def search_test_properties_string

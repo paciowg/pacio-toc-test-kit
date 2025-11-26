@@ -23,8 +23,13 @@ module PacioTOCTestKit
           .concat('Sequence')
       end
 
+      def profile_name
+        # TOC#1.0.0-ballot uses FHIR base Bundle resource type.
+        (profile.title || profile.name).gsub('  ', ' ')
+      end
+
       def title
-        title = profile.title.gsub(/Transition\s*of\s*Care\s*/, '').strip
+        title = (profile.title || profile.name).gsub(/Transition\s*of\s*Care\s*/, '').strip
         title = title.gsub(/US\s*Core\s*/, '').gsub(/\s*Profile/, '').strip
 
         if Naming.resources_with_multiple_profiles.include?(resource) && !title.start_with?(resource)

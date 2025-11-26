@@ -1,7 +1,7 @@
 require_relative '../../../read_test'
 
 module PacioTOCTestKit
-  module PacioSMPV100
+  module PacioTOCV100
     class CompositionReadTest < Inferno::Test
       include PacioTOCTestKit::ReadTest
 

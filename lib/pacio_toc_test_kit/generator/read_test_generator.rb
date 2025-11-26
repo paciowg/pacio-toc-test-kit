@@ -34,7 +34,7 @@ module PacioTOCTestKit
       end
 
       def module_name
-        "PacioSMP#{group_metadata.reformatted_version.upcase}"
+        "PacioTOC#{group_metadata.reformatted_version.upcase}"
       end
 
       def input_resource_id?
@@ -54,12 +54,11 @@ module PacioTOCTestKit
       end
 
       def resource_collection_string
+        #binding.pry if class_name == 'BundleReadTest'
         if input_resource_id?
           "all_scratch_resources, resource_ids: #{resource_id_input_string}"
-        elsif group_metadata.delayed? && resource_type != 'Provenance'
-          "scratch.dig(:references, '#{resource_type}'), delayed_reference: true"
         else
-          'all_scratch_resources'
+          super
         end
       end      
     end

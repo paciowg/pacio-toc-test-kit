@@ -11,7 +11,7 @@ module PacioTOCTestKit
         This test will look through the Bundle resources
         found previously for the following must support elements:
 
-
+        * Bundle.identifier
       )
 
       id :toc_v100_bundle_must_support_test

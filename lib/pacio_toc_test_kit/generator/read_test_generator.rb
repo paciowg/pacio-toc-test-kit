@@ -54,7 +54,6 @@ module PacioTOCTestKit
       end
 
       def resource_collection_string
-        #binding.pry if class_name == 'BundleReadTest'
         if input_resource_id?
           "all_scratch_resources, resource_ids: #{resource_id_input_string}"
         else

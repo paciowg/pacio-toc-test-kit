@@ -8,12 +8,12 @@ module PacioTOCTestKit
       id :toc_v100_bundle_validation_test
 
       title <<~DESC
-        Bundle resources returned during previous tests conform to the Bundle
+        Bundle resources returned during previous tests conform to the Transitions of Care Bundle
       DESC
 
       description %(
 This test verifies resources returned from the first search conform to
-the [Bundle](http://hl7.org/fhir/StructureDefinition/Bundle).
+the [Transitions of Care Bundle](http://hl7.org/fhir/us/pacio-toc/StructureDefinition/TOC-Bundle).
 Systems must demonstrate at least one valid example in order to pass this test.
 
 It verifies the presence of mandatory elements and that elements with
@@ -36,8 +36,8 @@ fail if their code/system are not found in the valueset.
 
       run do
         perform_validation_test(scratch_resources[:all] || [],
-                                'http://hl7.org/fhir/StructureDefinition/Bundle',
-                                '4.0.1')
+                                'http://hl7.org/fhir/us/pacio-toc/StructureDefinition/TOC-Bundle',
+                                '1.0.0-ballot')
       end
     end
   end

@@ -23,13 +23,10 @@ module PacioTOCTestKit
           .concat('Sequence')
       end
 
-      def profile_name
-        # TOC#1.0.0-ballot uses FHIR base Bundle resource type.
-        (profile.title || profile.name).gsub('  ', ' ')
-      end
-
       def title
-        title = (profile.title || profile.name).gsub(/Transition\s*of\s*Care\s*/, '').strip
+        # TODO: Bundle profile is incorrectly named as "Transitions of Care Bundle". 
+        # After author fix the name, we could remove the "s?" in the regex
+        title = (profile.title || profile.name).gsub(/Transitions?\s*of\s*Care\s*/, '').strip
         title = title.gsub(/US\s*Core\s*/, '').gsub(/\s*Profile/, '').strip
 
         if Naming.resources_with_multiple_profiles.include?(resource) && !title.start_with?(resource)

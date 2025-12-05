@@ -6,7 +6,7 @@ module PacioTOCTestKit
       include PacioTOCTestKit::ReadTest
 
       title 'Server returns correct Composition resource from Composition read interaction'
-      description 'A server MAY support the Composition read interaction.'
+      description 'A server SHOULD support the Composition read interaction.'
 
       id :toc_v100_composition_read_test
 

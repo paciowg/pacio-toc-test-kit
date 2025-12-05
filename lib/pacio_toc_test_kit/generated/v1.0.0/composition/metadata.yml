@@ -13,15 +13,15 @@
 :is_delayed: true
 :interactions:
 - :code: create
-  :expectation: MAY
+  :expectation: SHOULD
 - :code: search-type
   :expectation: MAY
 - :code: read
-  :expectation: MAY
+  :expectation: SHOULD
 - :code: vread
   :expectation: SHOULD
 - :code: update
-  :expectation: MAY
+  :expectation: SHOULD
 - :code: history-instance
   :expectation: SHOULD
 :operations: []
@@ -79,7 +79,7 @@
     :discriminator:
       :type: patternCodeableConcept
       :path: code
-      :code: 59271-7
+      :code: 18842-5
       :system: http://loinc.org
   - :slice_id: Composition.section:medication_equipment
     :slice_name: medication_equipment
@@ -166,7 +166,7 @@
   - :path: identifier
   - :path: type
   - :path: category.coding.code
-    :fixed_value: 42348-3
+    :fixed_value: 18761-7
   - :path: subject
     :types:
     - Reference
@@ -334,73 +334,73 @@
   - http://hl7.org/fhir/StructureDefinition/RelatedPerson
 - :path: Composition.attester.party
   :profiles:
-  - http://hl7.org/fhir/StructureDefinition/Patient
-  - http://hl7.org/fhir/StructureDefinition/RelatedPerson
-  - http://hl7.org/fhir/StructureDefinition/Practitioner
-  - http://hl7.org/fhir/StructureDefinition/PractitionerRole
-  - http://hl7.org/fhir/StructureDefinition/Organization
+  - http://hl7.org/fhir/StructureDefinition/Patient|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/RelatedPerson|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/Practitioner|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/PractitionerRole|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/Organization|4.0.1
 - :path: Composition.custodian
   :profiles:
   - http://hl7.org/fhir/us/core/StructureDefinition/us-core-organization|6.1.0
 - :path: Composition.relatesTo.target[x]
   :profiles:
-  - http://hl7.org/fhir/StructureDefinition/Composition
+  - http://hl7.org/fhir/StructureDefinition/Composition|4.0.1
 - :path: Composition.event.detail
   :profiles:
-  - http://hl7.org/fhir/StructureDefinition/Resource
+  - http://hl7.org/fhir/StructureDefinition/Resource|4.0.1
 - :path: Composition.section.author
   :profiles:
-  - http://hl7.org/fhir/StructureDefinition/Practitioner
-  - http://hl7.org/fhir/StructureDefinition/PractitionerRole
-  - http://hl7.org/fhir/StructureDefinition/Device
-  - http://hl7.org/fhir/StructureDefinition/Patient
-  - http://hl7.org/fhir/StructureDefinition/RelatedPerson
-  - http://hl7.org/fhir/StructureDefinition/Organization
+  - http://hl7.org/fhir/StructureDefinition/Practitioner|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/PractitionerRole|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/Device|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/Patient|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/RelatedPerson|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/Organization|4.0.1
 - :path: Composition.section.focus
   :profiles:
-  - http://hl7.org/fhir/StructureDefinition/Resource
+  - http://hl7.org/fhir/StructureDefinition/Resource|4.0.1
 - :path: Composition.section.entry
   :profiles:
-  - http://hl7.org/fhir/StructureDefinition/Resource
+  - http://hl7.org/fhir/StructureDefinition/Resource|4.0.1
 - :path: Composition.section.author
   :profiles:
-  - http://hl7.org/fhir/StructureDefinition/Practitioner
-  - http://hl7.org/fhir/StructureDefinition/PractitionerRole
-  - http://hl7.org/fhir/StructureDefinition/Device
-  - http://hl7.org/fhir/StructureDefinition/Patient
-  - http://hl7.org/fhir/StructureDefinition/RelatedPerson
-  - http://hl7.org/fhir/StructureDefinition/Organization
+  - http://hl7.org/fhir/StructureDefinition/Practitioner|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/PractitionerRole|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/Device|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/Patient|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/RelatedPerson|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/Organization|4.0.1
 - :path: Composition.section.focus
   :profiles:
-  - http://hl7.org/fhir/StructureDefinition/Resource
+  - http://hl7.org/fhir/StructureDefinition/Resource|4.0.1
 - :path: Composition.section.entry
   :profiles:
   - http://hl7.org/fhir/us/pacio-adi/StructureDefinition/ADI-PACPComposition
 - :path: Composition.section.author
   :profiles:
-  - http://hl7.org/fhir/StructureDefinition/Practitioner
-  - http://hl7.org/fhir/StructureDefinition/PractitionerRole
-  - http://hl7.org/fhir/StructureDefinition/Device
-  - http://hl7.org/fhir/StructureDefinition/Patient
-  - http://hl7.org/fhir/StructureDefinition/RelatedPerson
-  - http://hl7.org/fhir/StructureDefinition/Organization
+  - http://hl7.org/fhir/StructureDefinition/Practitioner|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/PractitionerRole|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/Device|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/Patient|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/RelatedPerson|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/Organization|4.0.1
 - :path: Composition.section.focus
   :profiles:
-  - http://hl7.org/fhir/StructureDefinition/Resource
+  - http://hl7.org/fhir/StructureDefinition/Resource|4.0.1
 - :path: Composition.section.entry
   :profiles:
   - http://hl7.org/fhir/us/core/StructureDefinition/us-core-allergyintolerance|6.1.0
 - :path: Composition.section.author
   :profiles:
-  - http://hl7.org/fhir/StructureDefinition/Practitioner
-  - http://hl7.org/fhir/StructureDefinition/PractitionerRole
-  - http://hl7.org/fhir/StructureDefinition/Device
-  - http://hl7.org/fhir/StructureDefinition/Patient
-  - http://hl7.org/fhir/StructureDefinition/RelatedPerson
-  - http://hl7.org/fhir/StructureDefinition/Organization
+  - http://hl7.org/fhir/StructureDefinition/Practitioner|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/PractitionerRole|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/Device|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/Patient|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/RelatedPerson|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/Organization|4.0.1
 - :path: Composition.section.focus
   :profiles:
-  - http://hl7.org/fhir/StructureDefinition/Resource
+  - http://hl7.org/fhir/StructureDefinition/Resource|4.0.1
 - :path: Composition.section.entry
   :profiles:
   - http://hl7.org/fhir/us/core/StructureDefinition/us-core-condition-encounter-diagnosis|6.1.0
@@ -408,15 +408,15 @@
   - http://hl7.org/fhir/us/core/StructureDefinition/us-core-simple-observation|6.1.0
 - :path: Composition.section.author
   :profiles:
-  - http://hl7.org/fhir/StructureDefinition/Practitioner
-  - http://hl7.org/fhir/StructureDefinition/PractitionerRole
-  - http://hl7.org/fhir/StructureDefinition/Device
-  - http://hl7.org/fhir/StructureDefinition/Patient
-  - http://hl7.org/fhir/StructureDefinition/RelatedPerson
-  - http://hl7.org/fhir/StructureDefinition/Organization
+  - http://hl7.org/fhir/StructureDefinition/Practitioner|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/PractitionerRole|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/Device|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/Patient|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/RelatedPerson|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/Organization|4.0.1
 - :path: Composition.section.focus
   :profiles:
-  - http://hl7.org/fhir/StructureDefinition/Resource
+  - http://hl7.org/fhir/StructureDefinition/Resource|4.0.1
 - :path: Composition.section.entry
   :profiles:
   - http://hl7.org/fhir/StructureDefinition/Observation
@@ -424,86 +424,86 @@
   - http://hl7.org/fhir/us/pacio-pfe/StructureDefinition/pfe-narrative-history-of-status
 - :path: Composition.section.author
   :profiles:
-  - http://hl7.org/fhir/StructureDefinition/Practitioner
-  - http://hl7.org/fhir/StructureDefinition/PractitionerRole
-  - http://hl7.org/fhir/StructureDefinition/Device
-  - http://hl7.org/fhir/StructureDefinition/Patient
-  - http://hl7.org/fhir/StructureDefinition/RelatedPerson
-  - http://hl7.org/fhir/StructureDefinition/Organization
+  - http://hl7.org/fhir/StructureDefinition/Practitioner|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/PractitionerRole|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/Device|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/Patient|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/RelatedPerson|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/Organization|4.0.1
 - :path: Composition.section.focus
   :profiles:
-  - http://hl7.org/fhir/StructureDefinition/Resource
+  - http://hl7.org/fhir/StructureDefinition/Resource|4.0.1
 - :path: Composition.section.entry
   :profiles:
   - http://hl7.org/fhir/us/core/StructureDefinition/us-core-immunization|6.1.0
 - :path: Composition.section.author
   :profiles:
-  - http://hl7.org/fhir/StructureDefinition/Practitioner
-  - http://hl7.org/fhir/StructureDefinition/PractitionerRole
-  - http://hl7.org/fhir/StructureDefinition/Device
-  - http://hl7.org/fhir/StructureDefinition/Patient
-  - http://hl7.org/fhir/StructureDefinition/RelatedPerson
-  - http://hl7.org/fhir/StructureDefinition/Organization
+  - http://hl7.org/fhir/StructureDefinition/Practitioner|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/PractitionerRole|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/Device|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/Patient|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/RelatedPerson|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/Organization|4.0.1
 - :path: Composition.section.focus
   :profiles:
-  - http://hl7.org/fhir/StructureDefinition/Resource
+  - http://hl7.org/fhir/StructureDefinition/Resource|4.0.1
 - :path: Composition.section.entry
   :profiles:
   - http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-note|6.1.0
   - http://hl7.org/fhir/us/core/StructureDefinition/us-core-documentreference|6.1.0
 - :path: Composition.section.author
   :profiles:
-  - http://hl7.org/fhir/StructureDefinition/Practitioner
-  - http://hl7.org/fhir/StructureDefinition/PractitionerRole
-  - http://hl7.org/fhir/StructureDefinition/Device
-  - http://hl7.org/fhir/StructureDefinition/Patient
-  - http://hl7.org/fhir/StructureDefinition/RelatedPerson
-  - http://hl7.org/fhir/StructureDefinition/Organization
+  - http://hl7.org/fhir/StructureDefinition/Practitioner|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/PractitionerRole|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/Device|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/Patient|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/RelatedPerson|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/Organization|4.0.1
 - :path: Composition.section.focus
   :profiles:
-  - http://hl7.org/fhir/StructureDefinition/Resource
+  - http://hl7.org/fhir/StructureDefinition/Resource|4.0.1
 - :path: Composition.section.entry
   :profiles:
   - http://hl7.org/fhir/StructureDefinition/Device
 - :path: Composition.section.author
   :profiles:
-  - http://hl7.org/fhir/StructureDefinition/Practitioner
-  - http://hl7.org/fhir/StructureDefinition/PractitionerRole
-  - http://hl7.org/fhir/StructureDefinition/Device
-  - http://hl7.org/fhir/StructureDefinition/Patient
-  - http://hl7.org/fhir/StructureDefinition/RelatedPerson
-  - http://hl7.org/fhir/StructureDefinition/Organization
+  - http://hl7.org/fhir/StructureDefinition/Practitioner|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/PractitionerRole|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/Device|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/Patient|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/RelatedPerson|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/Organization|4.0.1
 - :path: Composition.section.focus
   :profiles:
-  - http://hl7.org/fhir/StructureDefinition/Resource
+  - http://hl7.org/fhir/StructureDefinition/Resource|4.0.1
 - :path: Composition.section.entry
   :profiles:
   - http://hl7.org/fhir/StructureDefinition/List
 - :path: Composition.section.author
   :profiles:
-  - http://hl7.org/fhir/StructureDefinition/Practitioner
-  - http://hl7.org/fhir/StructureDefinition/PractitionerRole
-  - http://hl7.org/fhir/StructureDefinition/Device
-  - http://hl7.org/fhir/StructureDefinition/Patient
-  - http://hl7.org/fhir/StructureDefinition/RelatedPerson
-  - http://hl7.org/fhir/StructureDefinition/Organization
+  - http://hl7.org/fhir/StructureDefinition/Practitioner|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/PractitionerRole|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/Device|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/Patient|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/RelatedPerson|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/Organization|4.0.1
 - :path: Composition.section.focus
   :profiles:
-  - http://hl7.org/fhir/StructureDefinition/Resource
+  - http://hl7.org/fhir/StructureDefinition/Resource|4.0.1
 - :path: Composition.section.entry
   :profiles:
   - http://hl7.org/fhir/us/core/StructureDefinition/us-core-careplan|6.1.0
 - :path: Composition.section.author
   :profiles:
-  - http://hl7.org/fhir/StructureDefinition/Practitioner
-  - http://hl7.org/fhir/StructureDefinition/PractitionerRole
-  - http://hl7.org/fhir/StructureDefinition/Device
-  - http://hl7.org/fhir/StructureDefinition/Patient
-  - http://hl7.org/fhir/StructureDefinition/RelatedPerson
-  - http://hl7.org/fhir/StructureDefinition/Organization
+  - http://hl7.org/fhir/StructureDefinition/Practitioner|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/PractitionerRole|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/Device|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/Patient|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/RelatedPerson|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/Organization|4.0.1
 - :path: Composition.section.focus
   :profiles:
-  - http://hl7.org/fhir/StructureDefinition/Resource
+  - http://hl7.org/fhir/StructureDefinition/Resource|4.0.1
 - :path: Composition.section.entry
   :profiles:
   - http://hl7.org/fhir/us/core/StructureDefinition/us-core-condition-encounter-diagnosis|6.1.0
@@ -511,29 +511,29 @@
   - http://hl7.org/fhir/us/core/StructureDefinition/us-core-simple-observation|6.1.0
 - :path: Composition.section.author
   :profiles:
-  - http://hl7.org/fhir/StructureDefinition/Practitioner
-  - http://hl7.org/fhir/StructureDefinition/PractitionerRole
-  - http://hl7.org/fhir/StructureDefinition/Device
-  - http://hl7.org/fhir/StructureDefinition/Patient
-  - http://hl7.org/fhir/StructureDefinition/RelatedPerson
-  - http://hl7.org/fhir/StructureDefinition/Organization
+  - http://hl7.org/fhir/StructureDefinition/Practitioner|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/PractitionerRole|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/Device|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/Patient|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/RelatedPerson|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/Organization|4.0.1
 - :path: Composition.section.focus
   :profiles:
-  - http://hl7.org/fhir/StructureDefinition/Resource
+  - http://hl7.org/fhir/StructureDefinition/Resource|4.0.1
 - :path: Composition.section.entry
   :profiles:
   - http://hl7.org/fhir/us/core/StructureDefinition/us-core-procedure
 - :path: Composition.section.author
   :profiles:
-  - http://hl7.org/fhir/StructureDefinition/Practitioner
-  - http://hl7.org/fhir/StructureDefinition/PractitionerRole
-  - http://hl7.org/fhir/StructureDefinition/Device
-  - http://hl7.org/fhir/StructureDefinition/Patient
-  - http://hl7.org/fhir/StructureDefinition/RelatedPerson
-  - http://hl7.org/fhir/StructureDefinition/Organization
+  - http://hl7.org/fhir/StructureDefinition/Practitioner|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/PractitionerRole|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/Device|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/Patient|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/RelatedPerson|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/Organization|4.0.1
 - :path: Composition.section.focus
   :profiles:
-  - http://hl7.org/fhir/StructureDefinition/Resource
+  - http://hl7.org/fhir/StructureDefinition/Resource|4.0.1
 - :path: Composition.section.entry
   :profiles:
   - http://hl7.org/fhir/us/core/StructureDefinition/us-core-condition-problems-health-concerns|6.1.0
@@ -545,15 +545,15 @@
   - http://hl7.org/fhir/us/core/StructureDefinition/us-core-encounter|6.1.0
 - :path: Composition.section.author
   :profiles:
-  - http://hl7.org/fhir/StructureDefinition/Practitioner
-  - http://hl7.org/fhir/StructureDefinition/PractitionerRole
-  - http://hl7.org/fhir/StructureDefinition/Device
-  - http://hl7.org/fhir/StructureDefinition/Patient
-  - http://hl7.org/fhir/StructureDefinition/RelatedPerson
-  - http://hl7.org/fhir/StructureDefinition/Organization
+  - http://hl7.org/fhir/StructureDefinition/Practitioner|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/PractitionerRole|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/Device|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/Patient|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/RelatedPerson|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/Organization|4.0.1
 - :path: Composition.section.focus
   :profiles:
-  - http://hl7.org/fhir/StructureDefinition/Resource
+  - http://hl7.org/fhir/StructureDefinition/Resource|4.0.1
 - :path: Composition.section.entry
   :profiles:
   - http://hl7.org/fhir/us/core/StructureDefinition/us-core-condition-problems-health-concerns|6.1.0
@@ -565,29 +565,29 @@
   - http://hl7.org/fhir/us/core/StructureDefinition/us-core-encounter|6.1.0
 - :path: Composition.section.author
   :profiles:
-  - http://hl7.org/fhir/StructureDefinition/Practitioner
-  - http://hl7.org/fhir/StructureDefinition/PractitionerRole
-  - http://hl7.org/fhir/StructureDefinition/Device
-  - http://hl7.org/fhir/StructureDefinition/Patient
-  - http://hl7.org/fhir/StructureDefinition/RelatedPerson
-  - http://hl7.org/fhir/StructureDefinition/Organization
+  - http://hl7.org/fhir/StructureDefinition/Practitioner|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/PractitionerRole|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/Device|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/Patient|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/RelatedPerson|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/Organization|4.0.1
 - :path: Composition.section.focus
   :profiles:
-  - http://hl7.org/fhir/StructureDefinition/Resource
+  - http://hl7.org/fhir/StructureDefinition/Resource|4.0.1
 - :path: Composition.section.entry
   :profiles:
   - http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-clinical-result|6.1.0
 - :path: Composition.section.author
   :profiles:
-  - http://hl7.org/fhir/StructureDefinition/Practitioner
-  - http://hl7.org/fhir/StructureDefinition/PractitionerRole
-  - http://hl7.org/fhir/StructureDefinition/Device
-  - http://hl7.org/fhir/StructureDefinition/Patient
-  - http://hl7.org/fhir/StructureDefinition/RelatedPerson
-  - http://hl7.org/fhir/StructureDefinition/Organization
+  - http://hl7.org/fhir/StructureDefinition/Practitioner|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/PractitionerRole|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/Device|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/Patient|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/RelatedPerson|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/Organization|4.0.1
 - :path: Composition.section.focus
   :profiles:
-  - http://hl7.org/fhir/StructureDefinition/Resource
+  - http://hl7.org/fhir/StructureDefinition/Resource|4.0.1
 - :path: Composition.section.entry
   :profiles:
   - http://hl7.org/fhir/us/core/StructureDefinition/us-core-simple-observation|6.1.0
@@ -600,15 +600,15 @@
   - http://hl7.org/fhir/us/dental-data-exchange/StructureDefinition/dental-bundle
 - :path: Composition.section.author
   :profiles:
-  - http://hl7.org/fhir/StructureDefinition/Practitioner
-  - http://hl7.org/fhir/StructureDefinition/PractitionerRole
-  - http://hl7.org/fhir/StructureDefinition/Device
-  - http://hl7.org/fhir/StructureDefinition/Patient
-  - http://hl7.org/fhir/StructureDefinition/RelatedPerson
-  - http://hl7.org/fhir/StructureDefinition/Organization
+  - http://hl7.org/fhir/StructureDefinition/Practitioner|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/PractitionerRole|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/Device|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/Patient|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/RelatedPerson|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/Organization|4.0.1
 - :path: Composition.section.focus
   :profiles:
-  - http://hl7.org/fhir/StructureDefinition/Resource
+  - http://hl7.org/fhir/StructureDefinition/Resource|4.0.1
 - :path: Composition.section.entry
   :profiles:
   - http://hl7.org/fhir/us/core/StructureDefinition/us-core-vital-signs|6.1.0
@@ -622,4 +622,4 @@
 :id: toc_v100_composition
 :file_name: composition_group.rb
 :delayed_references: []
-:resource_conformance_expectation: MAY
+:resource_conformance_expectation: SHALL

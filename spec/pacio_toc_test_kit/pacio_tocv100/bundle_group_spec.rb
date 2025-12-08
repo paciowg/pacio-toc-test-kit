@@ -19,13 +19,13 @@ RSpec.describe PacioTOCTestKit::PacioTOCV100::BundleGroup do
         .to_return(status: 200, body: bundle.to_json)
 
       allow_any_instance_of(test)
-        .to receive(:scratch).and_return(test_scratch)        
-      
+        .to receive(:scratch).and_return(test_scratch)
+
       result = run(test, url: url, bundle_resource_ids: bundle_id)
       scratch_resources = test_scratch[:bundle_resources]
 
       expect(result.result).to eq('pass'), result.result_message
-      expect(scratch_resources).not_to be_empty
+      expect(scratch_resources).to_not be_empty
     end
   end
 end

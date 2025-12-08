@@ -17,13 +17,8 @@ module PacioTOCTestKit
       def add_metadata_from_resources
         metadata.groups =
           resources_in_capability_statement.flat_map do |resource|
-            # TOC#1.0.0-ballot does not populate supportedProfile for Bundle profile
-            if resource.type == 'Bundle'
-              GroupMetadataExtractor.new(resource, 'http://hl7.org/fhir/us/pacio-toc/StructureDefinition/TOC-Bundle', metadata, ig_resources).group_metadata
-            else
-              resource.supportedProfile&.map do |supported_profile|
-                GroupMetadataExtractor.new(resource, supported_profile, metadata, ig_resources).group_metadata
-              end
+            resource.supportedProfile&.map do |supported_profile|
+              GroupMetadataExtractor.new(resource, supported_profile, metadata, ig_resources).group_metadata
             end
           end.compact
 

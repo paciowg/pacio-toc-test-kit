@@ -25,6 +25,6 @@ module PacioTOCTestKit
       assert resource.id.present? && resource.id == id, bad_resource_id_message(id)
 
       all_scratch_resources << resource
-    end 
+    end
   end
 end

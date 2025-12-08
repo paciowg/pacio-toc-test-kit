@@ -26,7 +26,7 @@ module PacioTOCTestKit
       def title
         # TODO: Bundle profile is incorrectly named as "Transitions of Care Bundle". 
         # After author fix the name, we could remove the "s?" in the regex
-        title = (profile.title || profile.name).gsub(/Transitions?\s*of\s*Care\s*/, '').strip
+        title = (profile.title || profile.name).gsub(/Transition\s*of\s*Care\s*/, '').strip
         title = title.gsub(/US\s*Core\s*/, '').gsub(/\s*Profile/, '').strip
 
         if Naming.resources_with_multiple_profiles.include?(resource) && !title.start_with?(resource)

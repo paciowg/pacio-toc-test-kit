@@ -7,14 +7,14 @@ module PacioTOCTestKit
     class BundleGroup < Inferno::TestGroup
       title 'Bundle Tests'
       short_description <<~DESC
-        'Verify support for the server capabilities required by the Transitions of Care Bundle.'
+        'Verify support for the server capabilities required by the Transition of Care Bundle.'
       DESC
       description %(
 # Background
 
 The TOC Bundle sequence verifies that the system under test is
 able to provide correct responses for Bundle queries. These queries
-must contain resources conforming to the Transitions of Care Bundle as
+must contain resources conforming to the Transition of Care Bundle as
 specified in the TOC v1.0.0 Implementation Guide.
 
 # Testing Methodology
@@ -29,7 +29,7 @@ elements.
 
 ## Profile Validation
 Each resource returned from the first search is expected to conform to
-the [Transitions of Care Bundle](http://hl7.org/fhir/us/pacio-toc/StructureDefinition/TOC-Bundle).
+the [Transition of Care Bundle](http://hl7.org/fhir/us/pacio-toc/StructureDefinition/TOC-Bundle).
 Each element is checked against terminology binding and cardinality requirements.
 
 Elements with a required binding are validated against their bound

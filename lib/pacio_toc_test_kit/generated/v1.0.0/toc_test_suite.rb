@@ -8,7 +8,7 @@ require_relative 'composition_group'
 module PacioTOCTestKit
   module PacioTOCV100
     class PacioTOCestSuite < Inferno::TestSuite
-      title 'Pacio TOC Server v1.0.0'
+      title 'PACIO TOC Server v1.0.0'
       description %(
         The Pacio TOC Server Test Kit tests server systems for their conformance to the [Pacio TOC
         Implementation Guide](https://hl7.org/fhir/us/pacio-toc/2025May/).

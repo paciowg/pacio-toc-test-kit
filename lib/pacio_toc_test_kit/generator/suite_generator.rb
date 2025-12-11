@@ -26,7 +26,7 @@ module PacioTOCTestKit
       end
 
       def title
-        "Pacio TOC Server #{ig_metadata.ig_version}"
+        "PACIO TOC Server #{ig_metadata.ig_version}"
       end
 
       def ig_identifier

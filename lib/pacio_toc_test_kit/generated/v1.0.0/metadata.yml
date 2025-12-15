@@ -89,7 +89,7 @@
   :title: Composition
   :short_description: Verify support for the server capabilities required by the Transition
     of Care Composition.
-  :is_delayed: true
+  :is_delayed: false
   :interactions:
   - :code: create
     :expectation: SHOULD
@@ -104,8 +104,36 @@
   - :code: history-instance
     :expectation: SHOULD
   :operations: []
-  :searches: []
-  :search_definitions: {}
+  :searches:
+  - :names:
+    - patient
+    - category
+    :expectation: SHALL
+    :names_not_must_support_or_mandatory:
+    - category
+    :must_support_or_mandatory: false
+  :search_definitions:
+    :patient:
+      :paths:
+      - subject
+      :full_paths:
+      - Composition.subject
+      :comparators: {}
+      :values: []
+      :type: Reference
+      :contains_multiple: false
+      :multiple_or: MAY
+    :category:
+      :paths:
+      - category
+      :full_paths:
+      - Composition.category
+      :comparators: {}
+      :values:
+      - 18761-7
+      :type: CodeableConcept
+      :contains_multiple: false
+      :multiple_or: MAY
   :include_params: []
   :revincludes: []
   :required_concepts: []

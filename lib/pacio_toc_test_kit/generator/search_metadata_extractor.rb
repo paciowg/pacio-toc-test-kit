@@ -17,6 +17,8 @@ module PacioTOCTestKit
         when 'Patient' 
           result.delete_if { |r| r[:expectation] != 'SHALL' }
           result << { names: ['birthdate', 'name'], expectation: 'SHALL' }
+        when 'Composition' 
+          result << { names: ['patient', 'category'], expectation: 'SHALL' }
         end
         
         result

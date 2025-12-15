@@ -10,7 +10,7 @@ module PacioTOCTestKit
     class PacioTOCestSuite < Inferno::TestSuite
       title 'PACIO TOC Server v1.0.0'
       description %(
-        The Pacio TOC Server Test Kit tests server systems for their conformance to the [Pacio TOC
+        The PACIO TOC Server Test Kit tests server systems for their conformance to the [PACIO TOC
         Implementation Guide](https://hl7.org/fhir/us/pacio-toc/2025May/).
       )
 

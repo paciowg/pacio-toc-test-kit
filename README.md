@@ -1,6 +1,6 @@
-# Pacio TOC Test Kit Test Kit
+# PACIO TOC Test Kit Test Kit
 
-Pacio TOC test kit [Inferno](https://github.com/inferno-community/inferno-core) Test Kit
+PACIO TOC test kit [Inferno](https://github.com/inferno-community/inferno-core) Test Kit
 for FHIR testing.
 
 ## Getting Started

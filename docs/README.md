@@ -1,4 +1,4 @@
-Pacio TOC test kit documentation. This file has been generated from the Inferno
+PACIO TOC test kit documentation. This file has been generated from the Inferno
 test kit template and has not yet been customized for this test kit.
 
 *Note to developer: After customizing this documentation, initialize a GitHub

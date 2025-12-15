@@ -49,7 +49,7 @@ module PacioTOCTestKit
           Additionally, this test will check that GET and POST search methods
           return the same number of results. Search by POST is required by the
           FHIR R4 specification, and these tests interpret search by GET as a
-          requirement of Pacio TOC #{group_metadata.version}.
+          requirement of PACIO TOC #{group_metadata.version}.
         POST_SEARCH_DESCRIPTION
       end
 
@@ -64,7 +64,7 @@ module PacioTOCTestKit
           #{first_search_description}
           #{post_search_description}
 
-          [Pacio TOC Server CapabilityStatement](#{ig_link}/CapabilityStatement-toc.html)
+          [PACIO TOC Server CapabilityStatement](#{ig_link}/CapabilityStatement-toc.html)
         DESCRIPTION
       end
     end

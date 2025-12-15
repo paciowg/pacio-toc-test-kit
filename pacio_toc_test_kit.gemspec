@@ -5,7 +5,7 @@ Gem::Specification.new do |spec|
   spec.version       = PacioTOCTestKit::VERSION
   spec.authors       = ['tstrassner']
   # spec.email         = ['TODO']
-  spec.summary       = 'Pacio Toc Test Kit'
+  spec.summary       = 'PACIO TOC Test Kit'
   # spec.description   = <<~DESCRIPTION
   #   This is a big markdown description of the test kit.
   # DESCRIPTION

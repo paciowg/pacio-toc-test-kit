@@ -13,7 +13,7 @@ given on the Patient resource. This test
 will pass if resources are returned and match the search criteria. If
 none are returned, the test is skipped.
 
-[Pacio TOC Server CapabilityStatement](/CapabilityStatement-toc.html)
+[PACIO TOC Server CapabilityStatement](/CapabilityStatement-toc.html)
 
       )
 

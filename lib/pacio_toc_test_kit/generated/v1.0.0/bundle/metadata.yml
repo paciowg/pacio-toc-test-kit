@@ -32,7 +32,19 @@
 :required_concepts: []
 :must_supports:
   :extensions: []
-  :slices: []
+  :slices:
+  - :slice_id: Bundle.entry:patient
+    :slice_name: patient
+    :path: entry
+    :discriminator:
+      :type: profile
+      :code: http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient
+  - :slice_id: Bundle.entry:toc-composition
+    :slice_name: toc-composition
+    :path: entry
+    :discriminator:
+      :type: profile
+      :code: http://hl7.org/fhir/us/pacio-toc/StructureDefinition/TOC-Composition
   :elements:
   - :path: identifier
 :mandatory_elements:

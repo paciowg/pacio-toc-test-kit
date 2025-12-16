@@ -11,6 +11,8 @@ module PacioTOCTestKit
         This test will look through the Bundle resources
         found previously for the following must support elements:
 
+        * Bundle.entry:patient
+        * Bundle.entry:toc-composition
         * Bundle.identifier
       )
 

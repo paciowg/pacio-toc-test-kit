@@ -66,7 +66,7 @@ module PacioTOCTestKit
             discriminator: {
               type: 'profile',
               path: discriminator.path,
-              code: profile_url
+              profile: profile_url
             }
           }
         end

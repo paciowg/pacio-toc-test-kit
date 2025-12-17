@@ -39,14 +39,14 @@
     :discriminator:
       :type: profile
       :path: resource
-      :code: http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient
+      :profile: http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient
   - :slice_id: Bundle.entry:toc-composition
     :slice_name: toc-composition
     :path: entry
     :discriminator:
       :type: profile
       :path: resource
-      :code: http://hl7.org/fhir/us/pacio-toc/StructureDefinition/TOC-Composition
+      :profile: http://hl7.org/fhir/us/pacio-toc/StructureDefinition/TOC-Composition
   :elements:
   - :path: identifier
 :mandatory_elements:

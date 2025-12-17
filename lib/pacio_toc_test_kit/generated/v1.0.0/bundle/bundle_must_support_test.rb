@@ -1,9 +1,9 @@
-require 'us_core_test_kit/must_support_test'
+require_relative '../../../must_support_test'
 
 module PacioTOCTestKit
   module PacioTOCV100
     class BundleMustSupportTest < Inferno::Test
-      include USCoreTestKit::MustSupportTest
+      include PacioTOCTestKit::MustSupportTest
 
       title 'All must support elements are provided in the Bundle resources returned'
 

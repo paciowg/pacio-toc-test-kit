@@ -6,7 +6,22 @@ RSpec.describe PacioTOCTestKit::PacioTOCV100::BundleGroup do
   let(:bundle_id) { 'bundle-1' }
   let(:bundle) do
     FHIR::Bundle.new(
-      id: bundle_id
+      id: bundle_id,
+      identifier: {
+        value: 'identifier'
+      },
+      entry: [
+        {
+          resource: {
+            id: 'patient-1'
+          }
+        },
+        {
+          resource: {
+            id: 'toc-composition-1'
+          }
+        }
+      ]
     )
   end
 
@@ -24,8 +39,55 @@ RSpec.describe PacioTOCTestKit::PacioTOCV100::BundleGroup do
       result = run(test, url: url, bundle_resource_ids: bundle_id)
       scratch_resources = test_scratch[:bundle_resources]
 
-      expect(result.result).to eq('pass'), result.result_message
+      expect(result.result).to eq('pass')
       expect(scratch_resources).to_not be_empty
+    end
+  end
+
+  describe 'must support test' do
+    let(:test) { group.tests.find { |t| t.id.include?('must_support') } }
+
+    it 'passes if the Bundle does not have must support entries' do
+      allow_any_instance_of(test)
+        .to receive(:scratch).and_return(
+          {
+            bundle_resources: {
+              all: [
+                bundle
+              ]
+            }
+          }
+        )
+
+      allow_any_instance_of(test)
+        .to receive(:resource_is_valid_with_target_profile?).and_return(true)
+
+      result = run(test, url: url)
+
+      expect(result.result).to eq('pass')
+    end
+
+    it 'fails if the Bundle does not have must support entries' do
+      allow_any_instance_of(test)
+        .to receive(:scratch).and_return(
+          {
+            bundle_resources: {
+              all: [
+                bundle
+              ]
+            }
+          }
+        )
+
+      allow_any_instance_of(test)
+        .to receive(:resource_is_valid_with_target_profile?).and_return(false)
+
+      result = run(test, url: url)
+
+      expect(result.result).to eq('skip')
+      expect(result.result_message).to_not include('Bundle.identifier')
+      expect(result.result_message).to include('Bundle.entry:patient')
+      expect(result.result_message).to include('Bundle.entry:toc-composition')
     end
   end
 end

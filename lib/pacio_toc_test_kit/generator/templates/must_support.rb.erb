@@ -1,9 +1,9 @@
-require 'us_core_test_kit/must_support_test'
+require_relative '../../../must_support_test'
 
 module PacioTOCTestKit
   module <%= module_name %>
     class <%= class_name %> < Inferno::Test
-      include USCoreTestKit::MustSupportTest
+      include PacioTOCTestKit::MustSupportTest
 
       title 'All must support elements are provided in the <%= resource_type %> resources returned'
 

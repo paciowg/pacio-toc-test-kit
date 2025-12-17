@@ -46,7 +46,7 @@ RSpec.describe PacioTOCTestKit::PacioTOCV100::PatientGroup do
 
       result = run(test, url: url)
 
-      expect(result.result).to eq('pass'), result.result_message
+      expect(result.result).to eq('pass')
     end
 
     it 'fails if a 200 is not received' do
@@ -55,7 +55,7 @@ RSpec.describe PacioTOCTestKit::PacioTOCV100::PatientGroup do
 
       result = run(test, url: url)
 
-      expect(result.result).to eq('fail'), result.result_message
+      expect(result.result).to eq('fail')
       expect(result.result_message).to match(/200/)
     end
 
@@ -66,7 +66,7 @@ RSpec.describe PacioTOCTestKit::PacioTOCV100::PatientGroup do
 
       result = run(test, url: url)
 
-      expect(result.result).to eq('fail'), result.result_message
+      expect(result.result).to eq('fail')
       expect(result.result_message).to match(/resource to have id/)
     end
   end
@@ -98,7 +98,7 @@ RSpec.describe PacioTOCTestKit::PacioTOCV100::PatientGroup do
 
       result = run(test, url: url)
 
-      expect(result.result).to eq('pass'), result.result_message
+      expect(result.result).to eq('pass')
     end
 
     it 'fails if the resource is not valid' do
@@ -116,7 +116,7 @@ RSpec.describe PacioTOCTestKit::PacioTOCV100::PatientGroup do
 
       result = run(test, url: url)
 
-      expect(result.result).to eq('fail'), result.result_message
+      expect(result.result).to eq('fail')
     end
   end
 end

@@ -65,6 +65,7 @@ module PacioTOCTestKit
             path: current_element.path.gsub("#{resource}.", ''),
             discriminator: {
               type: 'profile',
+              path: discriminator.path,
               code: profile_url
             }
           }

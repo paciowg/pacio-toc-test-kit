@@ -19,11 +19,11 @@ module PacioTOCTestKit
       end
 
       def test_id
-        "toc_#{group_metadata.reformatted_version}_#{profile_identifier}_#{search_identifier}_search_test"
+        "#{Naming::SHORT_NAME.downcase}_#{group_metadata.reformatted_version}_#{profile_identifier}_#{search_identifier}_search_test"
       end
 
       def module_name
-        "PacioTOC#{group_metadata.reformatted_version.upcase}"
+        "Pacio#{Naming::SHORT_NAME}#{group_metadata.reformatted_version.upcase}"
       end
 
       def search_test_properties_string
@@ -49,7 +49,7 @@ module PacioTOCTestKit
           Additionally, this test will check that GET and POST search methods
           return the same number of results. Search by POST is required by the
           FHIR R4 specification, and these tests interpret search by GET as a
-          requirement of PACIO TOC #{group_metadata.version}.
+          requirement of PACIO #{Naming::SHORT_NAME} #{group_metadata.version}.
         POST_SEARCH_DESCRIPTION
       end
 
@@ -64,7 +64,7 @@ module PacioTOCTestKit
           #{first_search_description}
           #{post_search_description}
 
-          [PACIO TOC Server CapabilityStatement](#{ig_link}/CapabilityStatement-toc.html)
+          [PACIO #{Naming::SHORT_NAME} Server CapabilityStatement](#{ig_link}/CapabilityStatement-toc.html)
         DESCRIPTION
       end
     end

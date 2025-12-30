@@ -1,6 +1,7 @@
 module PacioTOCTestKit
   class Generator
     module Naming
+      SHORT_NAME = 'TOC'.freeze
       # From TOC
       COMPOSITION = 'http://hl7.org/fhir/us/pacio-toc/StructureDefinition/TOC-Composition'
       

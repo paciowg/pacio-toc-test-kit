@@ -24,7 +24,7 @@ module PacioTOCTestKit
       end
 
       def test_id
-        "toc_#{group_metadata.reformatted_version}_#{profile_identifier}_validation_test"
+        "#{Naming::SHORT_NAME.downcase}_#{group_metadata.reformatted_version}_#{profile_identifier}_validation_test"
       end
 
       def class_name
@@ -32,7 +32,7 @@ module PacioTOCTestKit
       end
 
       def module_name
-        "PacioTOC#{group_metadata.reformatted_version.upcase}"
+        "Pacio#{Naming::SHORT_NAME}#{group_metadata.reformatted_version.upcase}"
       end
 
       def generate

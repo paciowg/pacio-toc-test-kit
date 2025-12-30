@@ -7,7 +7,7 @@ require_relative 'bundle_group'
 
 module PacioTOCTestKit
   module PacioTOCV100
-    class PacioTOCestSuite < Inferno::TestSuite
+    class PacioTOCTestSuite < Inferno::TestSuite
       title 'PACIO TOC Server v1.0.0'
       description %(
         The PACIO TOC Server Test Kit tests server systems for their conformance to the [PACIO TOC

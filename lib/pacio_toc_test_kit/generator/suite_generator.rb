@@ -10,23 +10,23 @@ module PacioTOCTestKit
       end
 
       def base_output_file_name
-        'toc_test_suite.rb'
+        "#{Naming::SHORT_NAME.downcase}_test_suite.rb"
       end
 
       def class_name
-        'PacioTOCestSuite'
+        "Pacio#{Naming::SHORT_NAME}TestSuite"
       end
 
       def module_name
-        "PacioTOC#{ig_metadata.reformatted_version.upcase}"
+        "Pacio#{Naming::SHORT_NAME}#{ig_metadata.reformatted_version.upcase}"
       end
 
       def suite_id
-        "toc_#{ig_metadata.reformatted_version}"
+        "#{Naming::SHORT_NAME.downcase}_#{ig_metadata.reformatted_version}"
       end
 
       def title
-        "PACIO TOC Server #{ig_metadata.ig_version}"
+        "PACIO #{Naming::SHORT_NAME} Server #{ig_metadata.ig_version}"
       end
 
       def ig_identifier
@@ -39,7 +39,7 @@ module PacioTOCTestKit
       end
 
       def capability_statement_group_id
-        "toc_#{ig_metadata.reformatted_version}_capability_statement"
+        "#{Naming::SHORT_NAME.downcase}_#{ig_metadata.reformatted_version}_capability_statement"
       end
     end
   end

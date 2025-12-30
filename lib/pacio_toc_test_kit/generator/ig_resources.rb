@@ -1,4 +1,5 @@
 require 'us_core_test_kit/generator/ig_resources'
+require_relative 'naming'
 
 module PacioTOCTestKit
   class Generator
@@ -8,7 +9,7 @@ module PacioTOCTestKit
         resource_lower = resource.downcase
         
         id_match = resources_by_type['SearchParameter'].find do |param|
-          param.id == "toc-#{resource_lower}-#{normalized_name}" ||
+          param.id == "#{Naming::SHORT_NAME.downcase}-#{resource_lower}-#{normalized_name}" ||
             param.id == "us-core-#{resource_lower}-#{normalized_name}"
         end
 

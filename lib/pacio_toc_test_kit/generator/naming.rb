@@ -26,7 +26,7 @@ module PacioTOCTestKit
           return resource.underscore unless resource_has_multiple_profiles?(resource)
 
           group_metadata.name
-            .delete_prefix('toc_')
+            .delete_prefix("#{SHORT_NAME.downcase}_")
             .underscore
         end
 

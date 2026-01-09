@@ -47,7 +47,7 @@ RSpec.describe PacioTOCTestKit::PacioTOCV100::BundleGroup do
   describe 'must support test' do
     let(:test) { group.tests.find { |t| t.id.include?('must_support') } }
 
-    it 'passes if the Bundle does not have must support entries' do
+    it 'passes if the Bundle have must support entries' do
       allow_any_instance_of(test)
         .to receive(:scratch).and_return(
           {

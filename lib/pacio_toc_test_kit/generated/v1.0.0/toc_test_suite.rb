@@ -11,7 +11,7 @@ module PacioTOCTestKit
       title 'PACIO TOC Server v1.0.0'
       description %(
         The PACIO TOC Server Test Kit tests server systems for their conformance to the [PACIO TOC
-        Implementation Guide](https://hl7.org/fhir/us/pacio-toc/2025May/).
+        Implementation Guide](https://build.fhir.org/ig/HL7/fhir-transitions-of-care-ig/).
       )
 
       GENERAL_MESSAGE_FILTERS = [].freeze

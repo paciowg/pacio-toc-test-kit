@@ -184,7 +184,7 @@
       :discriminator:
         :type: patternCodeableConcept
         :path: code
-        :code: 54522-8
+        :code: 47420-5
         :system: http://loinc.org
     - :slice_id: Composition.section:immunizations
       :slice_name: immunizations
@@ -194,21 +194,21 @@
         :path: code
         :code: 82593-5
         :system: http://loinc.org
-    - :slice_id: Composition.section:instructions
-      :slice_name: instructions
+    - :slice_id: Composition.section:discharge_instructions
+      :slice_name: discharge_instructions
       :path: section
       :discriminator:
         :type: patternCodeableConcept
         :path: code
-        :code: 18842-5
+        :code: 69730-0
         :system: http://loinc.org
-    - :slice_id: Composition.section:medication_equipment
-      :slice_name: medication_equipment
+    - :slice_id: Composition.section:medical_devices
+      :slice_name: medical_devices
       :path: section
       :discriminator:
         :type: patternCodeableConcept
         :path: code
-        :code: 57829-4
+        :code: 46264-8
         :system: http://loinc.org
     - :slice_id: Composition.section:medications
       :slice_name: medications
@@ -216,7 +216,7 @@
       :discriminator:
         :type: patternCodeableConcept
         :path: code
-        :code: 52471-0
+        :code: 10160-0
         :system: http://loinc.org
     - :slice_id: Composition.section:plan_of_care
       :slice_name: plan_of_care
@@ -232,7 +232,7 @@
       :discriminator:
         :type: patternCodeableConcept
         :path: code
-        :code: 46019-6
+        :code: 11450-4
         :system: http://loinc.org
     - :slice_id: Composition.section:procedures
       :slice_name: procedures
@@ -240,7 +240,7 @@
       :discriminator:
         :type: patternCodeableConcept
         :path: code
-        :code: 28570-0
+        :code: 47519-4
         :system: http://loinc.org
     - :slice_id: Composition.section:reason_for_referral
       :slice_name: reason_for_referral
@@ -250,16 +250,8 @@
         :path: code
         :code: 42349-1
         :system: http://loinc.org
-    - :slice_id: Composition.section:reason_for_visit
-      :slice_name: reason_for_visit
-      :path: section
-      :discriminator:
-        :type: patternCodeableConcept
-        :path: code
-        :code: 29299-5
-        :system: http://loinc.org
-    - :slice_id: Composition.section:results
-      :slice_name: results
+    - :slice_id: Composition.section:clinical_results
+      :slice_name: clinical_results
       :path: section
       :discriminator:
         :type: patternCodeableConcept
@@ -280,7 +272,7 @@
       :discriminator:
         :type: patternCodeableConcept
         :path: code
-        :code: LP30605-7
+        :code: 85353-1
         :system: http://loinc.org
     :elements:
     - :path: language
@@ -314,10 +306,10 @@
     - :path: section:functional_status.text
     - :path: section:immunizations.title
     - :path: section:immunizations.text
-    - :path: section:instructions.title
-    - :path: section:instructions.text
-    - :path: section:medication_equipment.title
-    - :path: section:medication_equipment.text
+    - :path: section:discharge_instructions.title
+    - :path: section:discharge_instructions.text
+    - :path: section:medical_devices.title
+    - :path: section:medical_devices.text
     - :path: section:medications.title
     - :path: section:medications.text
     - :path: section:plan_of_care.title
@@ -328,10 +320,8 @@
     - :path: section:procedures.text
     - :path: section:reason_for_referral.title
     - :path: section:reason_for_referral.text
-    - :path: section:reason_for_visit.title
-    - :path: section:reason_for_visit.text
-    - :path: section:results.title
-    - :path: section:results.text
+    - :path: section:clinical_results.title
+    - :path: section:clinical_results.text
     - :path: section:social_history.title
     - :path: section:social_history.text
     - :path: section:vital_signs.title
@@ -370,10 +360,6 @@
     :strength: required
     :system: http://hl7.org/fhir/ValueSet/document-relationship-type
     :path: relatesTo.code
-  - :type: code
-    :strength: required
-    :system: http://hl7.org/fhir/ValueSet/list-mode
-    :path: section.mode
   - :type: code
     :strength: required
     :system: http://hl7.org/fhir/ValueSet/list-mode
@@ -677,27 +663,8 @@
     - http://hl7.org/fhir/StructureDefinition/Resource|4.0.1
   - :path: Composition.section.entry
     :profiles:
-    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-condition-problems-health-concerns|6.1.0
-    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-condition-encounter-diagnosis|6.1.0
-    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-procedure|6.1.0
-    - http://hl7.org/fhir/StructureDefinition/Observation
-    - http://hl7.org/fhir/StructureDefinition/ImmunizationRecommendation
-    - http://hl7.org/fhir/us/ccda/StructureDefinition/Discharge-Summary|2.0.0-ballot
-    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-encounter|6.1.0
-  - :path: Composition.section.author
-    :profiles:
-    - http://hl7.org/fhir/StructureDefinition/Practitioner|4.0.1
-    - http://hl7.org/fhir/StructureDefinition/PractitionerRole|4.0.1
-    - http://hl7.org/fhir/StructureDefinition/Device|4.0.1
-    - http://hl7.org/fhir/StructureDefinition/Patient|4.0.1
-    - http://hl7.org/fhir/StructureDefinition/RelatedPerson|4.0.1
-    - http://hl7.org/fhir/StructureDefinition/Organization|4.0.1
-  - :path: Composition.section.focus
-    :profiles:
-    - http://hl7.org/fhir/StructureDefinition/Resource|4.0.1
-  - :path: Composition.section.entry
-    :profiles:
     - http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-clinical-result|6.1.0
+    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-note|6.1.0
   - :path: Composition.section.author
     :profiles:
     - http://hl7.org/fhir/StructureDefinition/Practitioner|4.0.1
@@ -713,12 +680,9 @@
     :profiles:
     - http://hl7.org/fhir/us/core/StructureDefinition/us-core-simple-observation|6.1.0
     - http://hl7.org/fhir/us/core/StructureDefinition/us-core-smokingstatus|6.1.0
-    - http://hl7.org/fhir/uv/ips/StructureDefinition/Composition-uv-ips
     - http://hl7.org/fhir/us/pacio-pfe/StructureDefinition/pfe-narrative-history-of-status
     - http://hl7.org/fhir/us/core/StructureDefinition/us-core-careplan|6.1.0
     - http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient|6.1.0
-    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-coverage|6.1.0
-    - http://hl7.org/fhir/us/dental-data-exchange/StructureDefinition/dental-bundle
   - :path: Composition.section.author
     :profiles:
     - http://hl7.org/fhir/StructureDefinition/Practitioner|4.0.1

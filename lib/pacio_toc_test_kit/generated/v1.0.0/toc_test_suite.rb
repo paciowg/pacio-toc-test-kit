@@ -29,7 +29,7 @@ module PacioTOCTestKit
       id :toc_v100
 
       fhir_resource_validator do
-        igs 'hl7.fhir.us.pacio-toc#1.0.0', 'hl7.fhir.us.core#6.1.0'
+        igs 'hl7.fhir.us.pacio-toc#current', 'hl7.fhir.us.core#6.1.0'
         message_filters = VALIDATION_MESSAGE_FILTERS
 
         exclude_message do |message|

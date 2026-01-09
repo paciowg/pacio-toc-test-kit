@@ -27,18 +27,21 @@ module PacioTOCTestKit
         * Composition.section:behavioral_health
         * Composition.section:behavioral_health.text
         * Composition.section:behavioral_health.title
+        * Composition.section:clinical_results
+        * Composition.section:clinical_results.text
+        * Composition.section:clinical_results.title
+        * Composition.section:discharge_instructions
+        * Composition.section:discharge_instructions.text
+        * Composition.section:discharge_instructions.title
         * Composition.section:functional_status
         * Composition.section:functional_status.text
         * Composition.section:functional_status.title
         * Composition.section:immunizations
         * Composition.section:immunizations.text
         * Composition.section:immunizations.title
-        * Composition.section:instructions
-        * Composition.section:instructions.text
-        * Composition.section:instructions.title
-        * Composition.section:medication_equipment
-        * Composition.section:medication_equipment.text
-        * Composition.section:medication_equipment.title
+        * Composition.section:medical_devices
+        * Composition.section:medical_devices.text
+        * Composition.section:medical_devices.title
         * Composition.section:medications
         * Composition.section:medications.text
         * Composition.section:medications.title
@@ -54,12 +57,6 @@ module PacioTOCTestKit
         * Composition.section:reason_for_referral
         * Composition.section:reason_for_referral.text
         * Composition.section:reason_for_referral.title
-        * Composition.section:reason_for_visit
-        * Composition.section:reason_for_visit.text
-        * Composition.section:reason_for_visit.title
-        * Composition.section:results
-        * Composition.section:results.text
-        * Composition.section:results.title
         * Composition.section:social_history
         * Composition.section:social_history.text
         * Composition.section:social_history.title

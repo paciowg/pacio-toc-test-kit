@@ -9,7 +9,7 @@ module PacioTOCTestKit
       PATIENT = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient'
 
       IG_LINKS = {
-        'v1.0.0' => 'https://hl7.org/fhir/us/pacio-toc/2025May/'
+        'v1.0.0' => 'https://build.fhir.org/ig/HL7/fhir-transitions-of-care-ig/'
       }.freeze
 
       class << self

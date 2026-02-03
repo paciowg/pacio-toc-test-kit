@@ -1,7 +1,8 @@
-# Inferno Template Test Kit
+# PACIO TOC Test Kit
 
-Inferno template [Inferno](https://github.com/inferno-community/inferno-core) Test Kit
-for FHIR testing.
+This is an [Inferno](https://github.com/inferno-community/inferno-core) Test Kit
+for PACIO TOC Implementation Guide
+[v1.0.0-ballot](https://build.fhir.org/ig/HL7/fhir-transitions-of-care-ig/)
 
 ## Getting Started
 

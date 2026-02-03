@@ -6,7 +6,7 @@ RUN mkdir -p $INSTALL_PATH
 
 WORKDIR $INSTALL_PATH
 
-ADD lib/inferno_template/version.rb $INSTALL_PATH/lib/inferno_template/version.rb
+ADD lib/pacio_toc_test_kit/version.rb $INSTALL_PATH/lib/pacio_toc_test_kit/version.rb
 ADD *.gemspec $INSTALL_PATH
 ADD Gemfile* $INSTALL_PATH
 RUN gem install bundler

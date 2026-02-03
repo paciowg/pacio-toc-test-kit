@@ -13,3 +13,12 @@ namespace :db do
     Inferno::Utils::Migration.new.run
   end
 end
+
+namespace :pacio_toc do
+  desc 'Generate tests'
+  task :generate do
+    require_relative 'lib/pacio_toc_test_kit/generator'
+
+    PacioTOCTestKit::Generator.generate
+  end
+end

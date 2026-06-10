@@ -1,11 +1,14 @@
 require_relative 'patient/patient_id_search_test'
+require_relative 'patient/patient_active_search_test'
 require_relative 'patient/patient_birthdate_search_test'
+require_relative 'patient/patient_email_search_test'
 require_relative 'patient/patient_family_search_test'
 require_relative 'patient/patient_gender_search_test'
 require_relative 'patient/patient_given_search_test'
 require_relative 'patient/patient_identifier_search_test'
 require_relative 'patient/patient_name_search_test'
-require_relative 'patient/patient_birthdate_name_search_test'
+require_relative 'patient/patient_phone_search_test'
+require_relative 'patient/patient_telecom_search_test'
 require_relative 'patient/patient_read_test'
 require_relative 'patient/patient_validation_test'
 require_relative 'patient/patient_must_support_test'
@@ -38,7 +41,6 @@ following parameters:
 * given
 * identifier
 * name
-* birthdate + name
 
 ### Search Parameters
 The first search uses the selected patient(s) from the prior launch
@@ -92,13 +94,16 @@ read succeeds.
       end
 
       test from: :toc_v100_patient__id_search_test
+      test from: :toc_v100_patient_active_search_test
       test from: :toc_v100_patient_birthdate_search_test
+      test from: :toc_v100_patient_email_search_test
       test from: :toc_v100_patient_family_search_test
       test from: :toc_v100_patient_gender_search_test
       test from: :toc_v100_patient_given_search_test
       test from: :toc_v100_patient_identifier_search_test
       test from: :toc_v100_patient_name_search_test
-      test from: :toc_v100_patient_birthdate_name_search_test
+      test from: :toc_v100_patient_phone_search_test
+      test from: :toc_v100_patient_telecom_search_test
       test from: :toc_v100_patient_read_test
       test from: :toc_v100_patient_validation_test
       test from: :toc_v100_patient_must_support_test

@@ -343,7 +343,7 @@
   :title: Composition
   :short_description: Verify support for the server capabilities required by the Transition
     of Care Composition.
-  :is_delayed: false
+  :is_delayed: true
   :interactions:
   - :code: create
     :expectation: SHOULD
@@ -358,36 +358,8 @@
   - :code: history-instance
     :expectation: SHOULD
   :operations: []
-  :searches:
-  - :names:
-    - patient
-    - category
-    :expectation: SHALL
-    :names_not_must_support_or_mandatory:
-    - category
-    :must_support_or_mandatory: false
-  :search_definitions:
-    :patient:
-      :paths:
-      - subject
-      :full_paths:
-      - Composition.subject
-      :comparators: {}
-      :values: []
-      :type: Reference
-      :contains_multiple: false
-      :multiple_or: MAY
-    :category:
-      :paths:
-      - category
-      :full_paths:
-      - Composition.category
-      :comparators: {}
-      :values:
-      - 18761-7
-      :type: CodeableConcept
-      :contains_multiple: false
-      :multiple_or: MAY
+  :searches: []
+  :search_definitions: {}
   :include_params: []
   :revincludes: []
   :required_concepts: []
@@ -986,10 +958,22 @@
     :names_not_must_support_or_mandatory: []
     :must_support_or_mandatory: true
   - :names:
+    - active
+    :expectation: SHOULD
+    :names_not_must_support_or_mandatory:
+    - active
+    :must_support_or_mandatory: false
+  - :names:
     - birthdate
     :expectation: SHALL
     :names_not_must_support_or_mandatory: []
     :must_support_or_mandatory: true
+  - :names:
+    - email
+    :expectation: SHOULD
+    :names_not_must_support_or_mandatory:
+    - email
+    :must_support_or_mandatory: false
   - :names:
     - family
     :expectation: SHALL
@@ -1016,11 +1000,17 @@
     :names_not_must_support_or_mandatory: []
     :must_support_or_mandatory: true
   - :names:
-    - birthdate
-    - name
-    :expectation: SHALL
-    :names_not_must_support_or_mandatory: []
-    :must_support_or_mandatory: true
+    - phone
+    :expectation: SHOULD
+    :names_not_must_support_or_mandatory:
+    - phone
+    :must_support_or_mandatory: false
+  - :names:
+    - telecom
+    :expectation: SHOULD
+    :names_not_must_support_or_mandatory:
+    - telecom
+    :must_support_or_mandatory: false
   :search_definitions:
     :_id:
       :paths:
@@ -1030,6 +1020,16 @@
       :comparators: {}
       :values: []
       :type: http://hl7.org/fhirpath/System.String
+      :contains_multiple: false
+      :multiple_or: MAY
+    :active:
+      :paths:
+      - active
+      :full_paths:
+      - Patient.active
+      :comparators: {}
+      :values: []
+      :type: boolean
       :contains_multiple: false
       :multiple_or: MAY
     :birthdate:
@@ -1049,6 +1049,16 @@
         :ap: MAY
       :values: []
       :type: date
+      :contains_multiple: false
+      :multiple_or: MAY
+    :email:
+      :paths:
+      - telecom.where(system='email')
+      :full_paths:
+      - Patient.telecom.where(system='email')
+      :comparators: {}
+      :values: []
+      :type: token
       :contains_multiple: false
       :multiple_or: MAY
     :family:
@@ -1103,6 +1113,26 @@
       :comparators: {}
       :values: []
       :type: HumanName
+      :contains_multiple: true
+      :multiple_or: MAY
+    :phone:
+      :paths:
+      - telecom.where(system='phone')
+      :full_paths:
+      - Patient.telecom.where(system='phone')
+      :comparators: {}
+      :values: []
+      :type: token
+      :contains_multiple: false
+      :multiple_or: MAY
+    :telecom:
+      :paths:
+      - telecom
+      :full_paths:
+      - Patient.telecom
+      :comparators: {}
+      :values: []
+      :type: ContactPoint
       :contains_multiple: true
       :multiple_or: MAY
   :include_params: []
@@ -1251,3 +1281,220 @@
     - http://hl7.org/fhir/StructureDefinition/RelatedPerson
   :delayed_references: []
   :resource_conformance_expectation: MAY
+- :name: TOC_DocumentReference
+  :class_name: TocDocumentreferenceSequence
+  :version: v1.0.0
+  :reformatted_version: v100
+  :resource: DocumentReference
+  :profile_url: http://hl7.org/fhir/us/pacio-toc/StructureDefinition/TOC-DocumentReference
+  :profile_name: Transition of Care Document Reference
+  :profile_version: 1.0.0
+  :title: Document Reference
+  :short_description: Verify support for the server capabilities required by the Transition
+    of Care Document Reference.
+  :is_delayed: false
+  :interactions:
+  - :code: search-type
+    :expectation: SHALL
+  - :code: read
+    :expectation: SHALL
+  :operations: []
+  :searches:
+  - :expectation: SHALL
+    :names:
+    - patient
+    - type
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :names:
+    - _id
+    :expectation: SHALL
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :names:
+    - patient
+    :expectation: SHALL
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHALL
+    :names:
+    - patient
+    - category
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :expectation: SHALL
+    :names:
+    - patient
+    - category
+    - date
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  :search_definitions:
+    :_id:
+      :paths:
+      - id
+      :full_paths:
+      - DocumentReference.id
+      :comparators: {}
+      :values: []
+      :type: http://hl7.org/fhirpath/System.String
+      :contains_multiple: false
+      :multiple_or: MAY
+    :patient:
+      :paths:
+      - subject
+      :full_paths:
+      - DocumentReference.subject
+      :comparators: {}
+      :values: []
+      :type: Reference
+      :contains_multiple: false
+      :multiple_or: MAY
+    :category:
+      :paths:
+      - category
+      :full_paths:
+      - DocumentReference.category
+      :comparators: {}
+      :values: []
+      :type: CodeableConcept
+      :contains_multiple: true
+      :multiple_or: MAY
+    :date:
+      :paths:
+      - date
+      :full_paths:
+      - DocumentReference.date
+      :comparators:
+        :eq: MAY
+        :ne: MAY
+        :gt: SHALL
+        :ge: SHALL
+        :lt: SHALL
+        :le: SHALL
+        :sa: MAY
+        :eb: MAY
+        :ap: MAY
+      :values: []
+      :type: instant
+      :contains_multiple: false
+      :multiple_or: MAY
+    :type:
+      :paths:
+      - type
+      :full_paths:
+      - DocumentReference.type
+      :comparators: {}
+      :values:
+      - 18761-7
+      :type: CodeableConcept
+      :contains_multiple: false
+      :multiple_or: MAY
+  :include_params: []
+  :revincludes: []
+  :required_concepts:
+  - type
+  - category
+  :must_supports:
+    :extensions:
+    - :id: DocumentReference.extension:PointOfContactExtension
+      :path: extension
+      :url: http://hl7.org/fhir/us/pacio-toc/StructureDefinition/point-of-contact-extension
+    :slices: []
+    :elements:
+    - :path: identifier
+    - :path: status
+    - :path: type.coding.code
+      :fixed_value: 18761-7
+    - :path: category
+    - :path: subject
+      :types:
+      - Reference
+      :target_profiles:
+      - http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient|8.0.1
+    - :path: date
+    - :path: author
+      :types:
+      - Reference
+    - :path: custodian
+      :types:
+      - Reference
+      :target_profiles:
+      - http://hl7.org/fhir/us/core/StructureDefinition/us-core-organization|8.0.1
+    - :path: content
+    - :path: content.attachment
+    - :path: content.attachment.contentType
+    - :path: content.attachment.data
+    - :path: content.attachment.url
+    - :path: content.attachment.creation
+    - :path: content.format
+    - :path: context
+    - :path: context.encounter
+      :types:
+      - Reference
+      :target_profiles:
+      - http://hl7.org/fhir/us/core/StructureDefinition/us-core-encounter|8.0.1
+    - :path: context.period
+  :mandatory_elements:
+  - DocumentReference.status
+  - DocumentReference.type
+  - DocumentReference.category
+  - DocumentReference.subject
+  - DocumentReference.date
+  - DocumentReference.relatesTo.code
+  - DocumentReference.relatesTo.target
+  - DocumentReference.content
+  - DocumentReference.content.attachment
+  - DocumentReference.content.attachment.contentType
+  - DocumentReference.content.attachment.creation
+  :bindings:
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/document-reference-status
+    :path: status
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/composition-status
+    :path: docStatus
+  - :type: CodeableConcept
+    :strength: required
+    :system: http://hl7.org/fhir/us/core/ValueSet/us-core-documentreference-type
+    :path: type
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/document-relationship-type
+    :path: relatesTo.code
+  - :type: code
+    :strength: required
+    :system: http://hl7.org/fhir/ValueSet/mimetypes
+    :path: content.attachment.contentType
+  :references:
+  - :path: DocumentReference.subject
+    :profiles:
+    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient|8.0.1
+  - :path: DocumentReference.author
+    :profiles:
+    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitionerrole|8.0.1
+    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-organization|8.0.1
+    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient|8.0.1
+  - :path: DocumentReference.authenticator
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Practitioner|4.0.1
+    - http://hl7.org/fhir/StructureDefinition/PractitionerRole|4.0.1
+    - http://hl7.org/fhir/StructureDefinition/Organization|4.0.1
+  - :path: DocumentReference.custodian
+    :profiles:
+    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-organization|8.0.1
+  - :path: DocumentReference.relatesTo.target
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/DocumentReference|4.0.1
+  - :path: DocumentReference.context.encounter
+    :profiles:
+    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-encounter|8.0.1
+  - :path: DocumentReference.context.sourcePatientInfo
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Patient|4.0.1
+  - :path: DocumentReference.context.related
+    :profiles:
+    - http://hl7.org/fhir/StructureDefinition/Resource|4.0.1
+  :delayed_references: []

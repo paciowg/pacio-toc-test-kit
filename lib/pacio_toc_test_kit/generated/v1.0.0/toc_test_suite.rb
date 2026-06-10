@@ -2,8 +2,9 @@ require 'inferno/dsl/oauth_credentials'
 require_relative '../../version'
 require_relative '../../custom_groups/v1.0.0/capability_statement_group'
 require_relative 'patient_group'
-require_relative 'composition_group'
+require_relative 'document_reference_group'
 require_relative 'bundle_group'
+require_relative 'composition_group'
 
 module PacioTOCTestKit
   module PacioTOCV100
@@ -53,8 +54,9 @@ module PacioTOCTestKit
       group from: :toc_v100_capability_statement
 
       group from: :toc_v100_patient
-      group from: :toc_v100_composition
+      group from: :toc_v100_document_reference
       group from: :toc_v100_bundle
+      group from: :toc_v100_composition
 
       links [
         {

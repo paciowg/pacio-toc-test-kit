@@ -9,22 +9,6 @@ module PacioTOCTestKit
         resource_capabilities.searchParam.blank? || resource_capabilities.type == 'Bundle'
       end
 
-      def basic_searches
-        result = super
-        
-        case resource_capabilities.type
-        when 'Patient' 
-          # TOC#1.0.0-ballot: only add mandatory Patient search parameters.        
-          result.delete_if { |r| r[:expectation] != 'SHALL' }
-          result << { names: ['birthdate', 'name'], expectation: 'SHALL' }
-        when 'Composition' 
-          #TOC#1.0.0-ballot: Add patient+category search for Composition
-          result << { names: ['patient', 'category'], expectation: 'SHALL' }
-        end
-        
-        result
-      end
-
       def search_definitions
         search_param_names.each_with_object({}) do |name, definitions|
           definitions[name.to_sym] =

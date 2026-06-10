@@ -10,7 +10,7 @@
 :title: Composition
 :short_description: Verify support for the server capabilities required by the Transition
   of Care Composition.
-:is_delayed: false
+:is_delayed: true
 :interactions:
 - :code: create
   :expectation: SHOULD
@@ -25,36 +25,8 @@
 - :code: history-instance
   :expectation: SHOULD
 :operations: []
-:searches:
-- :names:
-  - patient
-  - category
-  :expectation: SHALL
-  :names_not_must_support_or_mandatory:
-  - category
-  :must_support_or_mandatory: false
-:search_definitions:
-  :patient:
-    :paths:
-    - subject
-    :full_paths:
-    - Composition.subject
-    :comparators: {}
-    :values: []
-    :type: Reference
-    :contains_multiple: false
-    :multiple_or: MAY
-  :category:
-    :paths:
-    - category
-    :full_paths:
-    - Composition.category
-    :comparators: {}
-    :values:
-    - 18761-7
-    :type: CodeableConcept
-    :contains_multiple: false
-    :multiple_or: MAY
+:searches: []
+:search_definitions: {}
 :include_params: []
 :revincludes: []
 :required_concepts: []
@@ -619,8 +591,6 @@
   :profiles:
   - http://hl7.org/fhir/us/core/StructureDefinition/us-core-vital-signs|8.0.1
 :tests:
-- :id: toc_v100_composition_patient_category_search_test
-  :file_name: composition_patient_category_search_test.rb
 - :id: toc_v100_composition_read_test
   :file_name: composition_read_test.rb
 - :id: toc_v100_composition_validation_test

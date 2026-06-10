@@ -14,6 +14,15 @@ module PacioTOCTestKit
           GroupMetadata.new(group_metadata_hash)
       end
 
+      def first_search_params
+        @first_search_params ||=
+          if resource == 'DocumentReference'
+            %w[patient type]
+          else
+            ['patient']
+          end
+      end
+
       def class_name
         base_name
           .split('-')

@@ -1,9 +1,9 @@
-require 'us_core_test_kit/generator/ig_loader'
+require 'pacio_inferno_core/generator/ig_loader'
 require_relative 'ig_resources'
 
 module PacioTOCTestKit
   class Generator
-    class IGLoader < USCoreTestKit::Generator::IGLoader
+    class IGLoader < PacioInfernoCore::Generator::IGLoader
       def ig_resources
         @ig_resources ||= IGResources.new
       end

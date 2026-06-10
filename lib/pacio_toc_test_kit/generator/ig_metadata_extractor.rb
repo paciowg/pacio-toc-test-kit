@@ -1,10 +1,10 @@
-require 'us_core_test_kit/generator/ig_metadata_extractor'
+require 'pacio_inferno_core/generator/ig_metadata_extractor'
 require_relative 'ig_metadata'
 require_relative 'group_metadata_extractor'
 
 module PacioTOCTestKit
   class Generator
-    class IGMetadataExtractor < USCoreTestKit::Generator::IGMetadataExtractor
+    class IGMetadataExtractor < PacioInfernoCore::Generator::IGMetadataExtractor
       def initialize(ig_resources)
         super
         self.metadata = IGMetadata.new

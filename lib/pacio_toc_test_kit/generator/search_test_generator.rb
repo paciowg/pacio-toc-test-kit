@@ -1,9 +1,9 @@
-require 'us_core_test_kit/generator/search_test_generator'
+require 'pacio_inferno_core/generator/search_test_generator'
 require_relative 'naming'
 
 module PacioTOCTestKit
   class Generator
-    class SearchTestGenerator < USCoreTestKit::Generator::SearchTestGenerator
+    class SearchTestGenerator < PacioInfernoCore::Generator::SearchTestGenerator
       class << self
         def generate(ig_metadata, base_output_dir)
           ig_metadata.groups
@@ -16,14 +16,6 @@ module PacioTOCTestKit
 
       def template
         @template ||= File.read(File.join(__dir__, 'templates', 'search.rb.erb'))
-      end
-
-      def test_id
-        "#{Naming::SHORT_NAME.downcase}_#{group_metadata.reformatted_version}_#{profile_identifier}_#{search_identifier}_search_test"
-      end
-
-      def module_name
-        "Pacio#{Naming::SHORT_NAME}#{group_metadata.reformatted_version.upcase}"
       end
 
       def search_test_properties_string
@@ -49,7 +41,7 @@ module PacioTOCTestKit
           Additionally, this test will check that GET and POST search methods
           return the same number of results. Search by POST is required by the
           FHIR R4 specification, and these tests interpret search by GET as a
-          requirement of PACIO #{Naming::SHORT_NAME} #{group_metadata.version}.
+          requirement of #{Naming::long_name} #{group_metadata.version}.
         POST_SEARCH_DESCRIPTION
       end
 
@@ -64,7 +56,7 @@ module PacioTOCTestKit
           #{first_search_description}
           #{post_search_description}
 
-          [PACIO #{Naming::SHORT_NAME} Server CapabilityStatement](#{ig_link}/CapabilityStatement-toc.html)
+          [#{Naming::long_name} Server CapabilityStatement](#{ig_link}/CapabilityStatement-toc.html)
         DESCRIPTION
       end
     end

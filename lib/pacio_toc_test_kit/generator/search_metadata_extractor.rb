@@ -1,9 +1,9 @@
-require 'us_core_test_kit/generator/search_metadata_extractor'
+require 'pacio_inferno_core/generator/search_metadata_extractor'
 require_relative 'search_definition_metadata_extractor'
 
 module PacioTOCTestKit
   class Generator
-    class SearchMetadataExtractor < USCoreTestKit::Generator::SearchMetadataExtractor
+    class SearchMetadataExtractor < PacioInfernoCore::Generator::SearchMetadataExtractor
       def no_search_params?
         # TOC#1.0.0-ballot: do not search Bundle
         resource_capabilities.searchParam.blank? || resource_capabilities.type == 'Bundle'

@@ -2,8 +2,8 @@
 <% end %><% if class_name == 'ListGroup' %>require_relative '../../custom_groups/v1.0.0/operation_retrieve_test'
 require_relative '../../custom_groups/v1.0.0/operation_submit_test'
 <% end %>
-module PacioTOCTestKit
-  module <%= module_name %>
+module <%= naming.module_name %>TestKit
+  module <%= module_name_with_version %>
     class <%= class_name %> < Inferno::TestGroup
       title '<%= title %> Tests'
       short_description <<~DESC

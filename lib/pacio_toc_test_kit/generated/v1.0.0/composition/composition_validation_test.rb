@@ -1,9 +1,9 @@
-require 'us_core_test_kit/validation_test'
+require 'pacio_inferno_core/validation_test'
 
 module PacioTOCTestKit
   module PacioTOCV100
     class CompositionValidationTest < Inferno::Test
-      include USCoreTestKit::ValidationTest
+      include PacioInfernoCore::ValidationTest
 
       id :toc_v100_composition_validation_test
 
@@ -37,7 +37,7 @@ fail if their code/system are not found in the valueset.
       run do
         perform_validation_test(scratch_resources[:all] || [],
                                 'http://hl7.org/fhir/us/pacio-toc/StructureDefinition/TOC-Composition',
-                                '1.0.0-ballot')
+                                '1.0.0')
       end
     end
   end

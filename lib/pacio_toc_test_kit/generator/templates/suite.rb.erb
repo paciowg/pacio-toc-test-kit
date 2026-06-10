@@ -3,8 +3,8 @@ require_relative '../../version'
 require_relative '<%= capability_statement_file_name %>'
 <% group_file_list.each do |file_name| %>require_relative '<%= file_name %>'
 <% end %>
-module PacioTOCTestKit
-  module <%= module_name %>
+module <%= naming.module_name %>TestKit
+  module <%= module_name_with_version %>
     class <%= class_name %> < Inferno::TestSuite
       title '<%= title %>'
       description %(

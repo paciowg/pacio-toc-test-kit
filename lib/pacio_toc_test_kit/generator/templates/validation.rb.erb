@@ -1,9 +1,9 @@
-require 'us_core_test_kit/validation_test'
+require 'pacio_inferno_core/validation_test'
 
-module PacioTOCTestKit
-  module <%= module_name %>
+module <%= naming.module_name %>TestKit
+  module <%= module_name_with_version %>
     class <%= class_name %> < Inferno::Test
-      include USCoreTestKit::ValidationTest
+      include PacioInfernoCore::ValidationTest
 
       id :<%= test_id %>
 

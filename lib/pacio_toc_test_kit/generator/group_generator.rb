@@ -1,11 +1,11 @@
-require 'us_core_test_kit/generator/group_generator'
+require 'pacio_inferno_core/generator/group_generator'
 
 require_relative 'naming'
 require_relative 'special_cases'
 
 module PacioTOCTestKit
   class Generator
-    class GroupGenerator < USCoreTestKit::Generator::GroupGenerator
+    class GroupGenerator < PacioInfernoCore::Generator::GroupGenerator
       class << self
         def generate(ig_metadata, base_output_dir)
           ig_metadata.ordered_groups

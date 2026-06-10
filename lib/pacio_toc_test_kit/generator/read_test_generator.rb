@@ -1,10 +1,10 @@
-require 'us_core_test_kit/generator/read_test_generator'
+require 'pacio_inferno_core/generator/read_test_generator'
 require_relative 'naming'
 require_relative 'special_cases'
 
 module PacioTOCTestKit
   class Generator
-    class ReadTestGenerator < USCoreTestKit::Generator::ReadTestGenerator
+    class ReadTestGenerator < PacioInfernoCore::Generator::ReadTestGenerator
       class << self
         def generate(ig_metadata, base_output_dir)
           ig_metadata.groups
@@ -19,22 +19,6 @@ module PacioTOCTestKit
 
       def template
         @template ||= File.read(File.join(__dir__, 'templates', 'read.rb.erb'))
-      end
-
-      def profile_identifier
-        Naming.snake_case_for_profile(group_metadata)
-      end
-
-      def test_id
-        "#{Naming::SHORT_NAME.downcase}_#{group_metadata.reformatted_version}_#{profile_identifier}_read_test"
-      end
-
-      def class_name
-        "#{Naming.upper_camel_case_for_profile(group_metadata)}ReadTest"
-      end
-
-      def module_name
-        "Pacio#{Naming::SHORT_NAME}#{group_metadata.reformatted_version.upcase}"
       end
 
       def input_resource_id?

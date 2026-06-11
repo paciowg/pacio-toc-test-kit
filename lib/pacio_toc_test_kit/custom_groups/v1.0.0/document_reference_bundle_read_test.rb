@@ -1,0 +1,125 @@
+# frozen_string_literal: true
+
+require 'uri'
+
+module PacioTOCTestKit
+  module PacioTOCV100
+    class DocumentReferenceBundleReadTest < Inferno::Test
+      TOC_BUNDLE_PROFILE_URL = 'http://hl7.org/fhir/us/pacio-toc/StructureDefinition/TOC-Bundle'
+      ARTIFACT_HEADERS = {
+        'Accept' => 'application/fhir+json, application/json+fhir'
+      }.freeze
+
+      title 'DocumentReference content attachment URLs resolve to a TOC Bundle'
+      description %(
+        This test retrieves artifacts referenced by
+        `DocumentReference.content.attachment.url`, saves any FHIR Bundle
+        artifacts to scratch, and verifies that at least one artifact conforms
+        to the Transition of Care Bundle profile.
+      )
+
+      id :toc_v100_document_reference_bundle_read_test
+      optional
+
+      def document_reference_resources
+        scratch.dig(:document_reference_resources, :all) || []
+      end
+
+      def bundle_resources
+        scratch[:bundle_resources] ||= {}
+        scratch[:bundle_resources][:all] ||= []
+      end
+
+      def attachment_urls
+        document_reference_resources.flat_map do |document_reference|
+          document_reference.content&.filter_map { |content| content.attachment&.url.presence } || []
+        end.uniq
+      end
+
+      def absolute_artifact_url(attachment_url)
+        return attachment_url if attachment_url.match?(%r{\Ahttps?://})
+
+        URI.join("#{fhir_base_url.chomp('/')}/", attachment_url).to_s
+      rescue URI::InvalidURIError
+        nil
+      end
+
+      def fhir_base_url
+        fhir_client.instance_variable_get(:@base_service_url)
+      end
+
+      def same_fhir_server_url?(artifact_url)
+        artifact_uri = URI.parse(artifact_url)
+        base_uri = URI.parse(fhir_base_url)
+        base_path = base_uri.path.chomp('/')
+
+        artifact_uri.scheme == base_uri.scheme &&
+          artifact_uri.host == base_uri.host &&
+          artifact_uri.port == base_uri.port &&
+          artifact_uri.path.start_with?("#{base_path}/")
+      rescue URI::InvalidURIError
+        false
+      end
+
+      def get_artifact(attachment_url)
+        artifact_url = absolute_artifact_url(attachment_url)
+
+        assert artifact_url.present?,
+               "DocumentReference.content.attachment.url `#{attachment_url}` is not a valid URL."
+
+        if same_fhir_server_url?(artifact_url)
+          store_request_and_refresh_token(fhir_client, nil, []) do
+            fhir_client.raw_read_url(artifact_url)
+          end
+        else
+          get(artifact_url, headers: ARTIFACT_HEADERS)
+        end
+      end
+
+      def fhir_resource_from_request(request)
+        request.resource
+      rescue StandardError
+        nil
+      end
+
+      def toc_bundle?(bundle)
+        resource_is_valid?(
+          resource: bundle,
+          profile_url: TOC_BUNDLE_PROFILE_URL,
+          add_messages_to_runnable: false
+        )
+      end
+
+      def save_bundle_resources(bundles)
+        bundle_resources.concat(bundles)
+        bundle_resources.uniq! { |bundle| [bundle.resourceType, bundle.id, bundle.source_json] }
+      end
+
+      run do
+        skip_if document_reference_resources.blank?,
+                'No DocumentReference resources were found. Please run the DocumentReference search tests first.'
+
+        urls = attachment_urls
+        skip_if urls.blank?,
+                'No DocumentReference.content.attachment.url values were found in the DocumentReference resources.'
+
+        bundles = urls.filter_map do |url|
+          artifact_request = get_artifact(url)
+
+          assert_response_status(200, request: artifact_request)
+
+          artifact = fhir_resource_from_request(artifact_request)
+          artifact if artifact.is_a?(FHIR::Bundle)
+        end
+
+        save_bundle_resources(bundles)
+
+        assert bundles.present?,
+               'No artifacts referenced by DocumentReference.content.attachment.url were FHIR Bundle resources.'
+
+        assert bundles.any? { |bundle| toc_bundle?(bundle) },
+               'No artifacts referenced by DocumentReference.content.attachment.url conform to the TOC Bundle profile.'
+      end
+    end
+  end
+end

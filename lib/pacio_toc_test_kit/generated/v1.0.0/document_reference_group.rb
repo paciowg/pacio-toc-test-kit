@@ -4,6 +4,7 @@ require_relative 'document_reference/document_reference_patient_search_test'
 require_relative 'document_reference/document_reference_patient_category_search_test'
 require_relative 'document_reference/document_reference_patient_category_date_search_test'
 require_relative 'document_reference/document_reference_read_test'
+require_relative '../../custom_groups/v1.0.0/document_reference_bundle_read_test'
 require_relative 'document_reference/document_reference_validation_test'
 require_relative 'document_reference/document_reference_must_support_test'
 
@@ -91,6 +92,7 @@ read succeeds.
       test from: :toc_v100_document_reference_patient_category_search_test
       test from: :toc_v100_document_reference_patient_category_date_search_test
       test from: :toc_v100_document_reference_read_test
+      test from: :toc_v100_document_reference_bundle_read_test
       test from: :toc_v100_document_reference_validation_test
       test from: :toc_v100_document_reference_must_support_test
     end

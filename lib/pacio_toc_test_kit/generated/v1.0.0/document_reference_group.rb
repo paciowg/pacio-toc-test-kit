@@ -92,9 +92,9 @@ read succeeds.
       test from: :toc_v100_document_reference_patient_category_search_test
       test from: :toc_v100_document_reference_patient_category_date_search_test
       test from: :toc_v100_document_reference_read_test
-      test from: :toc_v100_document_reference_bundle_read_test
       test from: :toc_v100_document_reference_validation_test
       test from: :toc_v100_document_reference_must_support_test
+      test from: :toc_v100_document_reference_bundle_read_test
     end
   end
 end

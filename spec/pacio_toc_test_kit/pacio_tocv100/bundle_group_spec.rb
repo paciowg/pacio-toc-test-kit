@@ -44,6 +44,81 @@ RSpec.describe PacioTOCTestKit::PacioTOCV100::BundleGroup do
     end
   end
 
+  describe 'composition read test' do
+    let(:test) { group.tests.find { |t| t.id.include?(PacioTOCTestKit::PacioTOCV100::BundleCompositionReadTest.id) } }
+    let(:toc_composition) do
+      FHIR::Composition.new(
+        id: 'toc-composition-1',
+        category: [
+          {
+            coding: [
+              {
+                code: PacioTOCTestKit::PacioTOCV100::BundleCompositionReadTest::TOC_COMPOSITION_CATEGORY_CODE
+              }
+            ]
+          }
+        ]
+      )
+    end
+    let(:non_toc_composition) do
+      FHIR::Composition.new(
+        id: 'non-toc-composition-1',
+        category: [
+          {
+            coding: [
+              {
+                code: 'other-code'
+              }
+            ]
+          }
+        ]
+      )
+    end
+    let(:test_scratch) do
+      {
+        bundle_resources: {
+          all: [
+            FHIR::Bundle.new(
+              id: bundle_id,
+              entry: [
+                {
+                  resource: toc_composition
+                },
+                {
+                  resource: non_toc_composition
+                }
+              ]
+            )
+          ]
+        }
+      }
+    end
+
+    before do
+      allow_any_instance_of(test)
+        .to receive(:scratch).and_return(test_scratch)
+    end
+
+    it 'saves Composition resources with category code 18761-7 to scratch' do
+      result = run(test, url: url)
+
+      expect(result.result).to eq('pass')
+      expect(test_scratch.dig(:composition_resources, :all)).to contain_exactly(toc_composition)
+    end
+
+    it 'fails when no Bundle entry contains a Composition with category code 18761-7' do
+      test_scratch[:bundle_resources][:all].first.entry = [
+        FHIR::Bundle::Entry.new(resource: non_toc_composition)
+      ]
+
+      result = run(test, url: url)
+
+      expect(result.result).to eq('fail')
+      expect(result.result_message).to include('category code `18761-7`')
+      expect(test_scratch.dig(:composition_resources, :all)).to be_empty
+    end
+  end
+
   describe 'must support test' do
     let(:test) { group.tests.find { |t| t.id.include?('must_support') } }
 

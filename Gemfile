@@ -9,7 +9,7 @@ group :development, :test do
   gem 'rubocop', '~> 1.9'
   gem 'rubocop-rspec', require: false
   #gem 'pacio_inferno_core', path: '../pacio-inferno-core'
-  gem 'pacio_inferno_core', git: "https://github.com/paciowg/pacio-toc-test-kit.git"  
+  gem 'pacio_inferno_core', git: "https://github.com/paciowg/pacio-inferno-core.git"                                  
 end
 
 group :test do

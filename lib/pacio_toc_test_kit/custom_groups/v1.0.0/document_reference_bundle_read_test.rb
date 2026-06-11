@@ -19,7 +19,6 @@ module PacioTOCTestKit
       )
 
       id :toc_v100_document_reference_bundle_read_test
-      optional
 
       def document_reference_resources
         scratch.dig(:document_reference_resources, :all) || []

@@ -15,7 +15,8 @@ module PacioTOCTestKit
             description: %(
               Comma separated list of Bundle ids that in sum contain
               all MUST SUPPORT elements
-            )
+            ),
+            optional: true
 
       def resource_type
         'Bundle'

@@ -11,7 +11,15 @@ module PacioTOCTestKit
       # Identifier for profiles that need input ID. Inferno willGenerator will put read test as
       # the first test for these resources.
       PROFILES_NEED_ID_INPUT = [
-        'bundle'
+      ]
+
+      RESOURCES_READ_FROM_SCRATCH = [
+        'Bundle',
+        'Composition'
+      ]
+
+      OPTIONAL_READ_RESOURCES = [
+        'Composition'
       ]
     end
   end

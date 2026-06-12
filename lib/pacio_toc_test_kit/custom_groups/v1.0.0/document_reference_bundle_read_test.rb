@@ -5,17 +5,17 @@ require 'uri'
 module PacioTOCTestKit
   module PacioTOCV100
     class DocumentReferenceBundleReadTest < Inferno::Test
-      TOC_BUNDLE_PROFILE_URL = 'http://hl7.org/fhir/us/pacio-toc/StructureDefinition/TOC-Bundle'
       ARTIFACT_HEADERS = {
         'Accept' => 'application/fhir+json, application/json+fhir'
       }.freeze
 
-      title 'DocumentReference content attachment URLs resolve to a TOC Bundle'
+      title 'DocumentReference content attachment URLs resolve to a FHIR Bundle'
       description %(
         This test retrieves artifacts referenced by
-        `DocumentReference.content.attachment.url`, saves any FHIR Bundle
-        artifacts to scratch, and verifies that at least one artifact conforms
-        to the Transition of Care Bundle profile.
+        `DocumentReference.content.attachment.url`, saves any document FHIR
+        Bundle artifacts with at least one Composition entry and at least one
+        Patient entry to scratch, and verifies that at least one artifact meets
+        these criteria.
       )
 
       id :toc_v100_document_reference_bundle_read_test
@@ -82,16 +82,15 @@ module PacioTOCTestKit
       end
 
       def toc_bundle?(bundle)
-        resource_is_valid?(
-          resource: bundle,
-          profile_url: TOC_BUNDLE_PROFILE_URL,
-          add_messages_to_runnable: false
-        )
+        bundle.is_a?(FHIR::Bundle) &&
+          bundle.type == 'document' &&
+          bundle.entry&.any? { |entry| entry.resource.is_a?(FHIR::Composition) } &&
+          bundle.entry&.any? { |entry| entry.resource.is_a?(FHIR::Patient) }
       end
 
       def save_bundle_resources(bundles)
         bundle_resources.concat(bundles)
-        bundle_resources.uniq! { |bundle| [bundle.resourceType, bundle.id, bundle.source_json] }
+        bundle_resources.uniq! { |bundle| [bundle.resourceType, bundle.id, bundle.to_hash] }
       end
 
       run do
@@ -108,16 +107,15 @@ module PacioTOCTestKit
           assert_response_status(200, request: artifact_request)
 
           artifact = fhir_resource_from_request(artifact_request)
-          artifact if artifact.is_a?(FHIR::Bundle)
+          artifact if toc_bundle?(artifact)
         end
 
         save_bundle_resources(bundles)
 
         assert bundles.present?,
-               'No artifacts referenced by DocumentReference.content.attachment.url were FHIR Bundle resources.'
-
-        assert bundles.any? { |bundle| toc_bundle?(bundle) },
-               'No artifacts referenced by DocumentReference.content.attachment.url conform to the TOC Bundle profile.'
+               'No artifacts referenced by DocumentReference.content.attachment.url were document FHIR Bundle ' \
+               'resources ' \
+               'with at least one Composition entry and at least one Patient entry.'
       end
     end
   end

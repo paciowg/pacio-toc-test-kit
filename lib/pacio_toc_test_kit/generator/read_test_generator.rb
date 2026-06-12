@@ -33,6 +33,10 @@ module PacioTOCTestKit
         SpecialCases::OPTIONAL_RESOURCES.include?(resource_type) || group_metadata.optional_profile?
       end
 
+      def optional_read_test?
+        SpecialCases::OPTIONAL_READ_RESOURCES.include?(resource_type)
+      end
+
       def group_title
         group_metadata.title
       end
@@ -40,10 +44,12 @@ module PacioTOCTestKit
       def resource_collection_string
         if input_resource_id?
           "all_scratch_resources, resource_ids: #{resource_id_input_string}"
+        elsif SpecialCases::RESOURCES_READ_FROM_SCRATCH.include?(resource_type)
+          'all_scratch_resources'
         else
           super
         end
-      end      
+      end
     end
   end
 end

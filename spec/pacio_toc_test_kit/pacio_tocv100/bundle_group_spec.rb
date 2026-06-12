@@ -27,16 +27,22 @@ RSpec.describe PacioTOCTestKit::PacioTOCV100::BundleGroup do
 
   describe 'read test' do
     let(:test) { group.tests.find { |t| t.id.include?('read') } }
-    let(:test_scratch) { {} }
+    let(:test_scratch) do
+      {
+        bundle_resources: {
+          all: [bundle]
+        }
+      }
+    end
 
-    it 'passes search with Bundle returned' do
+    it 'passes read with a Bundle saved from a DocumentReference attachment' do
       stub_request(:get, "#{url}/Bundle/#{bundle_id}")
         .to_return(status: 200, body: bundle.to_json)
 
       allow_any_instance_of(test)
         .to receive(:scratch).and_return(test_scratch)
 
-      result = run(test, url: url, bundle_resource_ids: bundle_id)
+      result = run(test, url: url)
       scratch_resources = test_scratch[:bundle_resources]
 
       expect(result.result).to eq('pass')

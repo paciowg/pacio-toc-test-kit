@@ -10,14 +10,6 @@ module PacioTOCTestKit
 
       id :toc_v100_bundle_read_test
 
-      input :bundle_resource_ids,
-            title: 'ID(s) for Bundle resources present on the server.',
-            description: %(
-              Comma separated list of Bundle ids that in sum contain
-              all MUST SUPPORT elements
-            ),
-            optional: true
-
       def resource_type
         'Bundle'
       end
@@ -27,7 +19,7 @@ module PacioTOCTestKit
       end
 
       run do
-        perform_read_test(all_scratch_resources, resource_ids: bundle_resource_ids)
+        perform_read_test(all_scratch_resources)
       end
     end
   end

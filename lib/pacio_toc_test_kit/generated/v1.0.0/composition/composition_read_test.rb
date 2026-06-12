@@ -9,6 +9,8 @@ module PacioTOCTestKit
       description 'A server SHOULD support the Composition read interaction.'
 
       id :toc_v100_composition_read_test
+      optional
+
 
       def resource_type
         'Composition'
@@ -19,7 +21,7 @@ module PacioTOCTestKit
       end
 
       run do
-        perform_read_test(scratch.dig(:references, 'Composition'), delayed_reference: true)
+        perform_read_test(all_scratch_resources)
       end
     end
   end

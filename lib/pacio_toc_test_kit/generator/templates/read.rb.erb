@@ -8,7 +8,9 @@ module <%= naming.module_name %>TestKit
       title 'Server returns correct <%= resource_type %> resource from <%= resource_type %> read interaction'
       description 'A server <%= conformance_expectation %> support the <%= resource_type %> read interaction.'
 
-      id :<%= test_id %>
+      id :<%= test_id %><% if optional_read_test? %>
+      optional
+<% end %>
 <% if input_resource_id? %>
       input :<%= resource_id_input_string %>,
             title: 'ID(s) for <%= group_title %> resources present on the server.',

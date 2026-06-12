@@ -3,7 +3,7 @@ PATH
   specs:
     pacio_toc_test_kit (1.0.0)
       inferno_core (~> 1.0.6)
-      pacio_inferno_core (~> 0.1.0)
+      pacio_inferno_core (~> 0.1.1)
       tls_test_kit (~> 1.0)
 
 GEM
@@ -228,7 +228,7 @@ GEM
       multi_xml (~> 0.5)
       rack (>= 1.2, < 4)
     oj (3.11.0)
-    pacio_inferno_core (0.1.0)
+    pacio_inferno_core (0.1.1)
       inferno_core (~> 1.0, >= 1.0.2)
     parallel (1.27.0)
     parser (3.3.9.0)

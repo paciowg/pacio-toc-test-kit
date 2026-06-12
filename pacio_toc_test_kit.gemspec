@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   # spec.homepage      = 'TODO'
   spec.license       = 'Apache-2.0'
   spec.add_dependency 'inferno_core', '~> 1.0.6'
-  #spec.add_dependency 'pacio_inferno_core', '~> 0.1.0'
+  spec.add_dependency 'pacio_inferno_core', '~> 0.1.1'
   spec.add_dependency 'tls_test_kit', '~> 1.0'
   spec.required_ruby_version = Gem::Requirement.new('>= 3.3.6')
   spec.metadata['inferno_test_kit'] = 'true'

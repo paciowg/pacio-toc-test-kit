@@ -82,10 +82,17 @@ module PacioTOCTestKit
       end
 
       def toc_bundle?(bundle)
-        bundle.is_a?(FHIR::Bundle) &&
-          bundle.type == 'document' &&
-          bundle.entry&.any? { |entry| entry.resource.is_a?(FHIR::Composition) } &&
-          bundle.entry&.any? { |entry| entry.resource.is_a?(FHIR::Patient) }
+        document_bundle?(bundle) &&
+          bundle_contains_resource_type?(bundle, FHIR::Composition) &&
+          bundle_contains_resource_type?(bundle, FHIR::Patient)
+      end
+
+      def document_bundle?(resource)
+        resource.is_a?(FHIR::Bundle) && resource.type == 'document'
+      end
+
+      def bundle_contains_resource_type?(bundle, resource_class)
+        bundle.entry&.any? { |entry| entry.resource.is_a?(resource_class) }
       end
 
       def save_bundle_resources(bundles)

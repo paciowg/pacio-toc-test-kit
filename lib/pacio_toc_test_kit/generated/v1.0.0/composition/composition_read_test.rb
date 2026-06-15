@@ -11,7 +11,6 @@ module PacioTOCTestKit
       id :toc_v100_composition_read_test
       optional
 
-
       def resource_type
         'Composition'
       end

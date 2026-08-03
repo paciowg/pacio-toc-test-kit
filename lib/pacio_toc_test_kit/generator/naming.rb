@@ -1,15 +1,32 @@
 module PacioTOCTestKit
   class Generator
     module Naming
-      SHORT_NAME = 'TOC'.freeze
-      
+      # From US Core
+      PATIENT = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient'
+
       IG_LINKS = {
-        'v1.0.0' => 'https://build.fhir.org/ig/HL7/fhir-transitions-of-care-ig/'
+        'v1.0.0' => 'https://hl7.org/fhir/us/pacio-toc/STU1'
       }.freeze
 
       class << self
         def resources_with_multiple_profiles
           []
+        end
+
+        def prefix
+          'toc'
+        end
+
+        def implementation_guide_id
+          "hl7.fhir.us.pacio-#{prefix}"
+        end
+
+        def module_name
+          "Pacio#{prefix.upcase}"
+        end
+
+        def long_name
+          "PACIO #{prefix.upcase}"
         end
 
         def resource_has_multiple_profiles?(resource)
@@ -21,7 +38,7 @@ module PacioTOCTestKit
           return resource.underscore unless resource_has_multiple_profiles?(resource)
 
           group_metadata.name
-            .delete_prefix("#{SHORT_NAME.downcase}_")
+            .delete_prefix("#{prefix}_")
             .underscore
         end
 

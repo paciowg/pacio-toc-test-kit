@@ -1,8 +1,8 @@
 require_relative '../../../search_test'
 require_relative '../../../generator/group_metadata'
 
-module PacioTOCTestKit
-  module <%= module_name %>
+module <%= naming.module_name %>TestKit
+  module <%= module_name_with_version %>
     class <%= class_name %> < Inferno::Test
       include PacioTOCTestKit::SearchTest
 
@@ -19,7 +19,7 @@ module PacioTOCTestKit
             description: 'Comma separated list of patient IDs that in sum contain all MUST SUPPORT elements'
 <% end %>
       def self.properties
-        @properties ||= USCoreTestKit::SearchTestProperties.new(
+        @properties ||= PacioInfernoCore::SearchTestProperties.new(
 <%= search_test_properties_string %>
         )
       end

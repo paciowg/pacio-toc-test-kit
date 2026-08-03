@@ -2,8 +2,9 @@ require 'inferno/dsl/oauth_credentials'
 require_relative '../../version'
 require_relative '../../custom_groups/v1.0.0/capability_statement_group'
 require_relative 'patient_group'
-require_relative 'composition_group'
+require_relative 'document_reference_group'
 require_relative 'bundle_group'
+require_relative 'composition_group'
 
 module PacioTOCTestKit
   module PacioTOCV100
@@ -11,7 +12,7 @@ module PacioTOCTestKit
       title 'PACIO TOC Server v1.0.0'
       description %(
         The PACIO TOC Server Test Kit tests server systems for their conformance to the [PACIO TOC
-        Implementation Guide](https://build.fhir.org/ig/HL7/fhir-transitions-of-care-ig/).
+        Implementation Guide](https://hl7.org/fhir/us/pacio-toc/STU1).
       )
 
       GENERAL_MESSAGE_FILTERS = [].freeze
@@ -29,7 +30,7 @@ module PacioTOCTestKit
       id :toc_v100
 
       fhir_resource_validator do
-        igs 'hl7.fhir.us.pacio-toc#current', 'hl7.fhir.us.core#6.1.0'
+        igs 'hl7.fhir.us.pacio-toc#1.0.0', 'hl7.fhir.us.core#6.1.0'
         message_filters = VALIDATION_MESSAGE_FILTERS
 
         exclude_message do |message|
@@ -53,8 +54,9 @@ module PacioTOCTestKit
       group from: :toc_v100_capability_statement
 
       group from: :toc_v100_patient
-      group from: :toc_v100_composition
+      group from: :toc_v100_document_reference
       group from: :toc_v100_bundle
+      group from: :toc_v100_composition
 
       links [
         {

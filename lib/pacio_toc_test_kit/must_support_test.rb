@@ -1,9 +1,9 @@
-require 'us_core_test_kit/must_support_test'
+require 'pacio_inferno_core/must_support_test'
 
 module PacioTOCTestKit
   module MustSupportTest
-    include USCoreTestKit::MustSupportTest
-    extend USCoreTestKit::MustSupportTest
+    include PacioInfernoCore::MustSupportTest
+    extend PacioInfernoCore::MustSupportTest
 
     def perform_must_support_test(resources)
       skip_if resources.blank?, "No #{resource_type} resources were found"

@@ -31,7 +31,7 @@ requirement of PACIO TOC v1.0.0.
             description: 'Comma separated list of patient IDs that in sum contain all MUST SUPPORT elements'
 
       def self.properties
-        @properties ||= USCoreTestKit::SearchTestProperties.new(
+        @properties ||= PacioInfernoCore::SearchTestProperties.new(
           first_search: true,
           resource_type: 'Patient',
           search_param_names: ['_id'],

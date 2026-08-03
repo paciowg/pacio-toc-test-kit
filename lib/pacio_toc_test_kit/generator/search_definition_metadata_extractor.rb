@@ -1,8 +1,8 @@
-require 'us_core_test_kit/generator/search_definition_metadata_extractor'
+require 'pacio_inferno_core/generator/search_definition_metadata_extractor'
 
 module PacioTOCTestKit
   class Generator
-    class SearchDefinitionMetadataExtractor < USCoreTestKit::Generator::SearchDefinitionMetadataExtractor
+    class SearchDefinitionMetadataExtractor < PacioInfernoCore::Generator::SearchDefinitionMetadataExtractor
       def full_paths
         @full_paths ||=
           begin

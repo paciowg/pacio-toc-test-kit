@@ -19,48 +19,62 @@ module PacioTOCTestKit
         * Composition.language
         * Composition.section.text
         * Composition.section:advance_directives
+        * Composition.section:advance_directives.emptyReason
         * Composition.section:advance_directives.text
         * Composition.section:advance_directives.title
         * Composition.section:allergies
+        * Composition.section:allergies.emptyReason
         * Composition.section:allergies.text
         * Composition.section:allergies.title
         * Composition.section:behavioral_health
+        * Composition.section:behavioral_health.emptyReason
         * Composition.section:behavioral_health.text
         * Composition.section:behavioral_health.title
         * Composition.section:clinical_results
+        * Composition.section:clinical_results.emptyReason
         * Composition.section:clinical_results.text
         * Composition.section:clinical_results.title
         * Composition.section:discharge_instructions
+        * Composition.section:discharge_instructions.emptyReason
         * Composition.section:discharge_instructions.text
         * Composition.section:discharge_instructions.title
         * Composition.section:functional_status
+        * Composition.section:functional_status.emptyReason
         * Composition.section:functional_status.text
         * Composition.section:functional_status.title
         * Composition.section:immunizations
+        * Composition.section:immunizations.emptyReason
         * Composition.section:immunizations.text
         * Composition.section:immunizations.title
         * Composition.section:medical_devices
+        * Composition.section:medical_devices.emptyReason
         * Composition.section:medical_devices.text
         * Composition.section:medical_devices.title
         * Composition.section:medications
+        * Composition.section:medications.emptyReason
         * Composition.section:medications.text
         * Composition.section:medications.title
         * Composition.section:plan_of_care
+        * Composition.section:plan_of_care.emptyReason
         * Composition.section:plan_of_care.text
         * Composition.section:plan_of_care.title
         * Composition.section:problems
+        * Composition.section:problems.emptyReason
         * Composition.section:problems.text
         * Composition.section:problems.title
         * Composition.section:procedures
         * Composition.section:procedures.text
         * Composition.section:procedures.title
         * Composition.section:reason_for_referral
+        * Composition.section:reason_for_referral.emptyReason
         * Composition.section:reason_for_referral.text
         * Composition.section:reason_for_referral.title
         * Composition.section:social_history
+        * Composition.section:social_history.emptyReason
         * Composition.section:social_history.text
         * Composition.section:social_history.title
         * Composition.section:vital_signs
+        * Composition.section:vital_signs.emptyReason
         * Composition.section:vital_signs.text
         * Composition.section:vital_signs.title
         * Composition.subject

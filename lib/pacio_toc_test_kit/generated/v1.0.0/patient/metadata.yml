@@ -32,10 +32,22 @@
   :names_not_must_support_or_mandatory: []
   :must_support_or_mandatory: true
 - :names:
+  - active
+  :expectation: SHOULD
+  :names_not_must_support_or_mandatory:
+  - active
+  :must_support_or_mandatory: false
+- :names:
   - birthdate
   :expectation: SHALL
   :names_not_must_support_or_mandatory: []
   :must_support_or_mandatory: true
+- :names:
+  - email
+  :expectation: SHOULD
+  :names_not_must_support_or_mandatory:
+  - email
+  :must_support_or_mandatory: false
 - :names:
   - family
   :expectation: SHALL
@@ -62,11 +74,17 @@
   :names_not_must_support_or_mandatory: []
   :must_support_or_mandatory: true
 - :names:
-  - birthdate
-  - name
-  :expectation: SHALL
-  :names_not_must_support_or_mandatory: []
-  :must_support_or_mandatory: true
+  - phone
+  :expectation: SHOULD
+  :names_not_must_support_or_mandatory:
+  - phone
+  :must_support_or_mandatory: false
+- :names:
+  - telecom
+  :expectation: SHOULD
+  :names_not_must_support_or_mandatory:
+  - telecom
+  :must_support_or_mandatory: false
 :search_definitions:
   :_id:
     :paths:
@@ -76,6 +94,16 @@
     :comparators: {}
     :values: []
     :type: http://hl7.org/fhirpath/System.String
+    :contains_multiple: false
+    :multiple_or: MAY
+  :active:
+    :paths:
+    - active
+    :full_paths:
+    - Patient.active
+    :comparators: {}
+    :values: []
+    :type: boolean
     :contains_multiple: false
     :multiple_or: MAY
   :birthdate:
@@ -97,6 +125,16 @@
     :type: date
     :contains_multiple: false
     :multiple_or: MAY
+  :email:
+    :paths:
+    - telecom.where(system='email')
+    :full_paths:
+    - Patient.telecom.where(system='email')
+    :comparators: {}
+    :values: []
+    :type: token
+    :contains_multiple: false
+    :multiple_or: MAY
   :family:
     :paths:
     - name.family
@@ -113,7 +151,11 @@
     :full_paths:
     - Patient.gender
     :comparators: {}
-    :values: []
+    :values:
+    - male
+    - female
+    - other
+    - unknown
     :type: code
     :contains_multiple: false
     :multiple_or: MAY
@@ -145,6 +187,26 @@
     :comparators: {}
     :values: []
     :type: HumanName
+    :contains_multiple: true
+    :multiple_or: MAY
+  :phone:
+    :paths:
+    - telecom.where(system='phone')
+    :full_paths:
+    - Patient.telecom.where(system='phone')
+    :comparators: {}
+    :values: []
+    :type: token
+    :contains_multiple: false
+    :multiple_or: MAY
+  :telecom:
+    :paths:
+    - telecom
+    :full_paths:
+    - Patient.telecom
+    :comparators: {}
+    :values: []
+    :type: ContactPoint
     :contains_multiple: true
     :multiple_or: MAY
 :include_params: []
@@ -219,6 +281,59 @@
   :strength: required
   :system: http://hl7.org/fhir/ValueSet/link-type
   :path: link.type
+- :type: Coding
+  :strength: required
+  :system: http://hl7.org/fhir/us/core/ValueSet/omb-race-category
+  :path: value
+  :extensions:
+  - http://hl7.org/fhir/us/core/StructureDefinition/us-core-race
+  - ombCategory
+- :type: Coding
+  :strength: required
+  :system: http://hl7.org/fhir/us/core/ValueSet/detailed-race
+  :path: value
+  :extensions:
+  - http://hl7.org/fhir/us/core/StructureDefinition/us-core-race
+  - detailed
+- :type: Coding
+  :strength: required
+  :system: http://hl7.org/fhir/us/core/ValueSet/omb-ethnicity-category
+  :path: value
+  :extensions:
+  - http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity
+  - ombCategory
+- :type: Coding
+  :strength: required
+  :system: http://hl7.org/fhir/us/core/ValueSet/detailed-ethnicity
+  :path: value
+  :extensions:
+  - http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity
+  - detailed
+- :type: CodeableConcept
+  :strength: extensible
+  :system: http://terminology.hl7.org/ValueSet/v3-TribalEntityUS
+  :path: value
+  :extensions:
+  - http://hl7.org/fhir/us/core/StructureDefinition/us-core-tribal-affiliation
+  - tribalAffiliation
+- :type: code
+  :strength: required
+  :system: http://hl7.org/fhir/us/core/ValueSet/birthsex
+  :path: value
+  :extensions:
+  - http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex
+- :type: code
+  :strength: required
+  :system: http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1240.3
+  :path: value
+  :extensions:
+  - http://hl7.org/fhir/us/core/StructureDefinition/us-core-sex
+- :type: CodeableConcept
+  :strength: extensible
+  :system: http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1021.32
+  :path: value
+  :extensions:
+  - http://hl7.org/fhir/us/core/StructureDefinition/us-core-genderIdentity
 :references:
 - :path: Patient.identifier.assigner
   :profiles:
@@ -241,8 +356,12 @@
 :tests:
 - :id: toc_v100_patient__id_search_test
   :file_name: patient_id_search_test.rb
+- :id: toc_v100_patient_active_search_test
+  :file_name: patient_active_search_test.rb
 - :id: toc_v100_patient_birthdate_search_test
   :file_name: patient_birthdate_search_test.rb
+- :id: toc_v100_patient_email_search_test
+  :file_name: patient_email_search_test.rb
 - :id: toc_v100_patient_family_search_test
   :file_name: patient_family_search_test.rb
 - :id: toc_v100_patient_gender_search_test
@@ -253,8 +372,10 @@
   :file_name: patient_identifier_search_test.rb
 - :id: toc_v100_patient_name_search_test
   :file_name: patient_name_search_test.rb
-- :id: toc_v100_patient_birthdate_name_search_test
-  :file_name: patient_birthdate_name_search_test.rb
+- :id: toc_v100_patient_phone_search_test
+  :file_name: patient_phone_search_test.rb
+- :id: toc_v100_patient_telecom_search_test
+  :file_name: patient_telecom_search_test.rb
 - :id: toc_v100_patient_read_test
   :file_name: patient_read_test.rb
 - :id: toc_v100_patient_validation_test

@@ -9,6 +9,7 @@ module PacioTOCTestKit
       description 'A server SHOULD support the Composition read interaction.'
 
       id :toc_v100_composition_read_test
+      optional
 
       def resource_type
         'Composition'

@@ -1,4 +1,4 @@
-require 'us_core_test_kit/generator/group_metadata_extractor'
+require 'pacio_inferno_core/generator/group_metadata_extractor'
 
 require_relative 'group_metadata'
 require_relative 'ig_metadata'
@@ -8,10 +8,19 @@ require_relative 'naming'
 
 module PacioTOCTestKit
   class Generator
-    class GroupMetadataExtractor < USCoreTestKit::Generator::GroupMetadataExtractor
+    class GroupMetadataExtractor < PacioInfernoCore::Generator::GroupMetadataExtractor
       def group_metadata
         @group_metadata ||=
           GroupMetadata.new(group_metadata_hash)
+      end
+
+      def first_search_params
+        @first_search_params ||=
+          if resource == 'DocumentReference'
+            %w[patient type]
+          else
+            ['patient']
+          end
       end
 
       def class_name

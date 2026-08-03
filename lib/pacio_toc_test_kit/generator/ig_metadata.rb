@@ -1,8 +1,8 @@
-require 'us_core_test_kit/generator/ig_metadata'
+require 'pacio_inferno_core/generator/ig_metadata'
 
 module PacioTOCTestKit
   class Generator
-    class IGMetadata < USCoreTestKit::Generator::IGMetadata
+    class IGMetadata < PacioInfernoCore::Generator::IGMetadata
       def to_hash
         {
           ig_version:,

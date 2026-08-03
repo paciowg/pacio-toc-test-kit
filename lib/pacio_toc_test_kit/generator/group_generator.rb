@@ -1,11 +1,11 @@
-require 'us_core_test_kit/generator/group_generator'
+require 'pacio_inferno_core/generator/group_generator'
 
 require_relative 'naming'
 require_relative 'special_cases'
 
 module PacioTOCTestKit
   class Generator
-    class GroupGenerator < USCoreTestKit::Generator::GroupGenerator
+    class GroupGenerator < PacioInfernoCore::Generator::GroupGenerator
       class << self
         def generate(ig_metadata, base_output_dir)
           ig_metadata.ordered_groups
@@ -34,7 +34,22 @@ module PacioTOCTestKit
       end
 
       def add_special_tests
-        # There is no special case for TOC IG.
+        case resource_type
+        when 'DocumentReference'
+          add_custom_test('document_reference_bundle_read_test')
+        when 'Bundle'
+          add_custom_test('bundle_composition_read_test')
+        end
+      end
+
+      def add_custom_test(test_name)
+        test_id = "toc_#{group_metadata.reformatted_version}_#{test_name}"
+        return if group_metadata.tests&.any? { |test| test[:id] == test_id }
+
+        group_metadata.add_test(
+          id: test_id,
+          file_name: "../../custom_groups/#{group_metadata.version}/#{test_name}.rb"
+        )
       end
 
       def description

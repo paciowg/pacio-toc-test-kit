@@ -1,4 +1,5 @@
 require_relative 'bundle/bundle_read_test'
+require_relative '../../custom_groups/v1.0.0/bundle_composition_read_test'
 require_relative 'bundle/bundle_validation_test'
 require_relative 'bundle/bundle_must_support_test'
 
@@ -56,6 +57,7 @@ read succeeds.
       test from: :toc_v100_bundle_read_test
       test from: :toc_v100_bundle_validation_test
       test from: :toc_v100_bundle_must_support_test
+      test from: :toc_v100_bundle_composition_read_test
     end
   end
 end

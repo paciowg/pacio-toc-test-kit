@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require 'us_core_test_kit/read_test'
+require 'pacio_inferno_core/read_test'
 
 module PacioTOCTestKit
   module ReadTest
-    include USCoreTestKit::ReadTest
-    extend USCoreTestKit::ReadTest
+    include PacioInfernoCore::ReadTest
+    extend PacioInfernoCore::ReadTest
 
     def perform_read_test(resources, reply_handler = nil, delayed_reference: false, resource_ids: nil)
       if resources.blank? && resource_ids.present?

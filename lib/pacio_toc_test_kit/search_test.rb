@@ -1,8 +1,8 @@
-require 'us_core_test_kit/search_test'
+require 'pacio_inferno_core/search_test'
 
 module PacioTOCTestKit
   module SearchTest
-    include USCoreTestKit::SearchTest
-    extend USCoreTestKit::SearchTest
+    include PacioInfernoCore::SearchTest
+    extend PacioInfernoCore::SearchTest
   end
 end

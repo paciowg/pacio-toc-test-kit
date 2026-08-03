@@ -27,20 +27,101 @@ RSpec.describe PacioTOCTestKit::PacioTOCV100::BundleGroup do
 
   describe 'read test' do
     let(:test) { group.tests.find { |t| t.id.include?('read') } }
-    let(:test_scratch) { {} }
+    let(:test_scratch) do
+      {
+        bundle_resources: {
+          all: [bundle]
+        }
+      }
+    end
 
-    it 'passes search with Bundle returned' do
+    it 'passes read with a Bundle saved from a DocumentReference attachment' do
       stub_request(:get, "#{url}/Bundle/#{bundle_id}")
         .to_return(status: 200, body: bundle.to_json)
 
       allow_any_instance_of(test)
         .to receive(:scratch).and_return(test_scratch)
 
-      result = run(test, url: url, bundle_resource_ids: bundle_id)
+      result = run(test, url: url)
       scratch_resources = test_scratch[:bundle_resources]
 
       expect(result.result).to eq('pass')
       expect(scratch_resources).to_not be_empty
+    end
+  end
+
+  describe 'composition read test' do
+    let(:test) { group.tests.find { |t| t.id.include?(PacioTOCTestKit::PacioTOCV100::BundleCompositionReadTest.id) } }
+    let(:toc_composition) do
+      FHIR::Composition.new(
+        id: 'toc-composition-1',
+        category: [
+          {
+            coding: [
+              {
+                code: PacioTOCTestKit::PacioTOCV100::BundleCompositionReadTest::TOC_COMPOSITION_CATEGORY_CODE
+              }
+            ]
+          }
+        ]
+      )
+    end
+    let(:non_toc_composition) do
+      FHIR::Composition.new(
+        id: 'non-toc-composition-1',
+        category: [
+          {
+            coding: [
+              {
+                code: 'other-code'
+              }
+            ]
+          }
+        ]
+      )
+    end
+    let(:test_scratch) do
+      {
+        bundle_resources: {
+          all: [
+            FHIR::Bundle.new(
+              id: bundle_id,
+              entry: [
+                {
+                  resource: toc_composition
+                },
+                {
+                  resource: non_toc_composition
+                }
+              ]
+            )
+          ]
+        }
+      }
+    end
+
+    before do
+      allow_any_instance_of(test)
+        .to receive(:scratch).and_return(test_scratch)
+    end
+
+    it 'saves Composition resources with category code 18761-7 to scratch' do
+      result = run(test, url: url)
+
+      expect(result.result).to eq('pass')
+      expect(test_scratch.dig(:composition_resources, :all)).to contain_exactly(toc_composition)
+    end
+
+    it 'fails when no Bundle entry contains a Composition with category code 18761-7' do
+      test_scratch[:bundle_resources][:all].first.entry = [
+        FHIR::Bundle::Entry.new(resource: non_toc_composition)
+      ]
+
+      result = run(test, url: url)
+
+      expect(result.result).to eq('fail')
+      expect(result.result_message).to include('category code `18761-7`')
+      expect(test_scratch.dig(:composition_resources, :all)).to be_empty
     end
   end
 

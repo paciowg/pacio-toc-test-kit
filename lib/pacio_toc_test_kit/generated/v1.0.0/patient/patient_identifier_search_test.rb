@@ -19,7 +19,7 @@ none are returned, the test is skipped.
 
       id :toc_v100_patient_identifier_search_test
       def self.properties
-        @properties ||= USCoreTestKit::SearchTestProperties.new(
+        @properties ||= PacioInfernoCore::SearchTestProperties.new(
           resource_type: 'Patient',
           search_param_names: ['identifier'],
           token_search_params: ['identifier']

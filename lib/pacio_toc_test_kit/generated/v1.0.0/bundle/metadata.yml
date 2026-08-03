@@ -6,7 +6,7 @@
 :resource: Bundle
 :profile_url: http://hl7.org/fhir/us/pacio-toc/StructureDefinition/TOC-Bundle
 :profile_name: Transition of Care Bundle
-:profile_version: 1.0.0-ballot
+:profile_version: 1.0.0
 :title: Bundle
 :short_description: Verify support for the server capabilities required by the Transition
   of Care Bundle.
@@ -33,13 +33,6 @@
 :must_supports:
   :extensions: []
   :slices:
-  - :slice_id: Bundle.entry:patient
-    :slice_name: patient
-    :path: entry
-    :discriminator:
-      :type: profile
-      :path: resource
-      :profile: http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient
   - :slice_id: Bundle.entry:toc-composition
     :slice_name: toc-composition
     :path: entry
@@ -47,6 +40,125 @@
       :type: profile
       :path: resource
       :profile: http://hl7.org/fhir/us/pacio-toc/StructureDefinition/TOC-Composition
+  - :slice_id: Bundle.entry:patient
+    :slice_name: patient
+    :path: entry
+    :discriminator:
+      :type: profile
+      :path: resource
+      :profile: http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient|8.0.1
+  - :slice_id: Bundle.entry:advance-directives
+    :slice_name: advance-directives
+    :path: entry
+    :discriminator:
+      :type: profile
+      :path: resource
+      :profile: http://hl7.org/fhir/us/pacio-adi/StructureDefinition/ADI-DocumentReference
+  - :slice_id: Bundle.entry:allergies
+    :slice_name: allergies
+    :path: entry
+    :discriminator:
+      :type: profile
+      :path: resource
+      :profile: http://hl7.org/fhir/us/core/StructureDefinition/us-core-allergyintolerance|8.0.1
+  - :slice_id: Bundle.entry:encounter-diagnosis
+    :slice_name: encounter-diagnosis
+    :path: entry
+    :discriminator:
+      :type: profile
+      :path: resource
+      :profile: http://hl7.org/fhir/us/core/StructureDefinition/us-core-condition-encounter-diagnosis|8.0.1
+  - :slice_id: Bundle.entry:problems
+    :slice_name: problems
+    :path: entry
+    :discriminator:
+      :type: profile
+      :path: resource
+      :profile: http://hl7.org/fhir/us/core/StructureDefinition/us-core-condition-problems-health-concerns|8.0.1
+  - :slice_id: Bundle.entry:simple-observation
+    :slice_name: simple-observation
+    :path: entry
+    :discriminator:
+      :type: profile
+      :path: resource
+      :profile: http://hl7.org/fhir/us/core/StructureDefinition/us-core-simple-observation|8.0.1
+  - :slice_id: Bundle.entry:immunizations
+    :slice_name: immunizations
+    :path: entry
+    :discriminator:
+      :type: profile
+      :path: resource
+      :profile: http://hl7.org/fhir/us/core/StructureDefinition/us-core-immunization|8.0.1
+  - :slice_id: Bundle.entry:medical-devices
+    :slice_name: medical-devices
+    :path: entry
+    :discriminator:
+      :type: profile
+      :path: resource
+      :profile: http://hl7.org/fhir/us/pacio-pfe/StructureDefinition/pfe-use-of-device
+  - :slice_id: Bundle.entry:medications
+    :slice_name: medications
+    :path: entry
+    :discriminator:
+      :type: profile
+      :path: resource
+      :profile: http://hl7.org/fhir/us/smp/StructureDefinition/smp-medication-list
+  - :slice_id: Bundle.entry:plan-of-care
+    :slice_name: plan-of-care
+    :path: entry
+    :discriminator:
+      :type: profile
+      :path: resource
+      :profile: http://hl7.org/fhir/us/core/StructureDefinition/us-core-careplan|8.0.1
+  - :slice_id: Bundle.entry:procedures
+    :slice_name: procedures
+    :path: entry
+    :discriminator:
+      :type: profile
+      :path: resource
+      :profile: http://hl7.org/fhir/us/core/StructureDefinition/us-core-procedure|8.0.1
+  - :slice_id: Bundle.entry:encounter
+    :slice_name: encounter
+    :path: entry
+    :discriminator:
+      :type: profile
+      :path: resource
+      :profile: http://hl7.org/fhir/us/core/StructureDefinition/us-core-encounter|8.0.1
+  - :slice_id: Bundle.entry:vital-signs
+    :slice_name: vital-signs
+    :path: entry
+    :discriminator:
+      :type: profile
+      :path: resource
+      :profile: http://hl7.org/fhir/us/core/StructureDefinition/us-core-vital-signs|8.0.1
+  - :slice_id: Bundle.entry:practitioner
+    :slice_name: practitioner
+    :path: entry
+    :discriminator:
+      :type: profile
+      :path: resource
+      :profile: http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitioner|8.0.1
+  - :slice_id: Bundle.entry:practitioner-role
+    :slice_name: practitioner-role
+    :path: entry
+    :discriminator:
+      :type: profile
+      :path: resource
+      :profile: http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitionerrole|8.0.1
+  - :slice_id: Bundle.entry:organization
+    :slice_name: organization
+    :path: entry
+    :discriminator:
+      :type: profile
+      :path: resource
+      :profile: http://hl7.org/fhir/us/core/StructureDefinition/us-core-organization|8.0.1
+  - :slice_id: Bundle.entry:location
+    :slice_name: location
+    :path: entry
+    :discriminator:
+      :type: profile
+      :path: resource
+      :profile: http://hl7.org/fhir/us/core/StructureDefinition/us-core-location|8.0.1
   :elements:
   - :path: identifier
 :mandatory_elements:
@@ -63,6 +175,134 @@
   :strength: required
   :system: http://hl7.org/fhir/ValueSet/bundle-type
   :path: type
+- :type: code
+  :strength: required
+  :system: http://hl7.org/fhir/ValueSet/search-entry-mode
+  :path: entry.search.mode
+- :type: code
+  :strength: required
+  :system: http://hl7.org/fhir/ValueSet/http-verb
+  :path: entry.request.method
+- :type: code
+  :strength: required
+  :system: http://hl7.org/fhir/ValueSet/search-entry-mode
+  :path: entry.search.mode
+- :type: code
+  :strength: required
+  :system: http://hl7.org/fhir/ValueSet/http-verb
+  :path: entry.request.method
+- :type: code
+  :strength: required
+  :system: http://hl7.org/fhir/ValueSet/search-entry-mode
+  :path: entry.search.mode
+- :type: code
+  :strength: required
+  :system: http://hl7.org/fhir/ValueSet/http-verb
+  :path: entry.request.method
+- :type: code
+  :strength: required
+  :system: http://hl7.org/fhir/ValueSet/search-entry-mode
+  :path: entry.search.mode
+- :type: code
+  :strength: required
+  :system: http://hl7.org/fhir/ValueSet/http-verb
+  :path: entry.request.method
+- :type: code
+  :strength: required
+  :system: http://hl7.org/fhir/ValueSet/search-entry-mode
+  :path: entry.search.mode
+- :type: code
+  :strength: required
+  :system: http://hl7.org/fhir/ValueSet/http-verb
+  :path: entry.request.method
+- :type: code
+  :strength: required
+  :system: http://hl7.org/fhir/ValueSet/search-entry-mode
+  :path: entry.search.mode
+- :type: code
+  :strength: required
+  :system: http://hl7.org/fhir/ValueSet/http-verb
+  :path: entry.request.method
+- :type: code
+  :strength: required
+  :system: http://hl7.org/fhir/ValueSet/search-entry-mode
+  :path: entry.search.mode
+- :type: code
+  :strength: required
+  :system: http://hl7.org/fhir/ValueSet/http-verb
+  :path: entry.request.method
+- :type: code
+  :strength: required
+  :system: http://hl7.org/fhir/ValueSet/search-entry-mode
+  :path: entry.search.mode
+- :type: code
+  :strength: required
+  :system: http://hl7.org/fhir/ValueSet/http-verb
+  :path: entry.request.method
+- :type: code
+  :strength: required
+  :system: http://hl7.org/fhir/ValueSet/search-entry-mode
+  :path: entry.search.mode
+- :type: code
+  :strength: required
+  :system: http://hl7.org/fhir/ValueSet/http-verb
+  :path: entry.request.method
+- :type: code
+  :strength: required
+  :system: http://hl7.org/fhir/ValueSet/search-entry-mode
+  :path: entry.search.mode
+- :type: code
+  :strength: required
+  :system: http://hl7.org/fhir/ValueSet/http-verb
+  :path: entry.request.method
+- :type: code
+  :strength: required
+  :system: http://hl7.org/fhir/ValueSet/search-entry-mode
+  :path: entry.search.mode
+- :type: code
+  :strength: required
+  :system: http://hl7.org/fhir/ValueSet/http-verb
+  :path: entry.request.method
+- :type: code
+  :strength: required
+  :system: http://hl7.org/fhir/ValueSet/search-entry-mode
+  :path: entry.search.mode
+- :type: code
+  :strength: required
+  :system: http://hl7.org/fhir/ValueSet/http-verb
+  :path: entry.request.method
+- :type: code
+  :strength: required
+  :system: http://hl7.org/fhir/ValueSet/search-entry-mode
+  :path: entry.search.mode
+- :type: code
+  :strength: required
+  :system: http://hl7.org/fhir/ValueSet/http-verb
+  :path: entry.request.method
+- :type: code
+  :strength: required
+  :system: http://hl7.org/fhir/ValueSet/search-entry-mode
+  :path: entry.search.mode
+- :type: code
+  :strength: required
+  :system: http://hl7.org/fhir/ValueSet/http-verb
+  :path: entry.request.method
+- :type: code
+  :strength: required
+  :system: http://hl7.org/fhir/ValueSet/search-entry-mode
+  :path: entry.search.mode
+- :type: code
+  :strength: required
+  :system: http://hl7.org/fhir/ValueSet/http-verb
+  :path: entry.request.method
+- :type: code
+  :strength: required
+  :system: http://hl7.org/fhir/ValueSet/search-entry-mode
+  :path: entry.search.mode
+- :type: code
+  :strength: required
+  :system: http://hl7.org/fhir/ValueSet/http-verb
+  :path: entry.request.method
 - :type: code
   :strength: required
   :system: http://hl7.org/fhir/ValueSet/search-entry-mode

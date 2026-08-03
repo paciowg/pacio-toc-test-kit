@@ -6,11 +6,11 @@
 :resource: Composition
 :profile_url: http://hl7.org/fhir/us/pacio-toc/StructureDefinition/TOC-Composition
 :profile_name: Transition of Care Composition
-:profile_version: 1.0.0-ballot
+:profile_version: 1.0.0
 :title: Composition
 :short_description: Verify support for the server capabilities required by the Transition
   of Care Composition.
-:is_delayed: false
+:is_delayed: true
 :interactions:
 - :code: create
   :expectation: SHOULD
@@ -25,36 +25,8 @@
 - :code: history-instance
   :expectation: SHOULD
 :operations: []
-:searches:
-- :names:
-  - patient
-  - category
-  :expectation: SHALL
-  :names_not_must_support_or_mandatory:
-  - category
-  :must_support_or_mandatory: false
-:search_definitions:
-  :patient:
-    :paths:
-    - subject
-    :full_paths:
-    - Composition.subject
-    :comparators: {}
-    :values: []
-    :type: Reference
-    :contains_multiple: false
-    :multiple_or: MAY
-  :category:
-    :paths:
-    - category
-    :full_paths:
-    - Composition.category
-    :comparators: {}
-    :values:
-    - 18761-7
-    :type: CodeableConcept
-    :contains_multiple: false
-    :multiple_or: MAY
+:searches: []
+:search_definitions: {}
 :include_params: []
 :revincludes: []
 :required_concepts: []
@@ -83,8 +55,8 @@
     :discriminator:
       :type: patternCodeableConcept
       :path: code
-      :code: 54511-1
-      :system: http://loinc.org
+      :code: behavioral_health_summary
+      :system: http://hl7.org/fhir/us/pacio-toc/CodeSystem/toc-temp-cs
   - :slice_id: Composition.section:functional_status
     :slice_name: functional_status
     :path: section
@@ -99,7 +71,7 @@
     :discriminator:
       :type: patternCodeableConcept
       :path: code
-      :code: 82593-5
+      :code: 11369-6
       :system: http://loinc.org
   - :slice_id: Composition.section:discharge_instructions
     :slice_name: discharge_instructions
@@ -131,7 +103,7 @@
     :discriminator:
       :type: patternCodeableConcept
       :path: code
-      :code: 74449-0
+      :code: 18776-5
       :system: http://loinc.org
   - :slice_id: Composition.section:problems
     :slice_name: problems
@@ -163,7 +135,7 @@
     :discriminator:
       :type: patternCodeableConcept
       :path: code
-      :code: 19146-0
+      :code: 30954-2
       :system: http://loinc.org
   - :slice_id: Composition.section:social_history
     :slice_name: social_history
@@ -171,7 +143,7 @@
     :discriminator:
       :type: patternCodeableConcept
       :path: code
-      :code: 10166-7
+      :code: 29762-2
       :system: http://loinc.org
   - :slice_id: Composition.section:vital_signs
     :slice_name: vital_signs
@@ -179,7 +151,7 @@
     :discriminator:
       :type: patternCodeableConcept
       :path: code
-      :code: 85353-1
+      :code: 8716-3
       :system: http://loinc.org
   :elements:
   - :path: language
@@ -191,7 +163,7 @@
     :types:
     - Reference
     :target_profiles:
-    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient|6.1.0
+    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient|8.0.1
   - :path: date
   - :path: author
     :types:
@@ -201,38 +173,52 @@
     :types:
     - Reference
     :target_profiles:
-    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-organization|6.1.0
+    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-organization|8.0.1
   - :path: section.text
   - :path: section:advance_directives.title
   - :path: section:advance_directives.text
+  - :path: section:advance_directives.emptyReason
   - :path: section:allergies.title
   - :path: section:allergies.text
+  - :path: section:allergies.emptyReason
   - :path: section:behavioral_health.title
   - :path: section:behavioral_health.text
+  - :path: section:behavioral_health.emptyReason
   - :path: section:functional_status.title
   - :path: section:functional_status.text
+  - :path: section:functional_status.emptyReason
   - :path: section:immunizations.title
   - :path: section:immunizations.text
+  - :path: section:immunizations.emptyReason
   - :path: section:discharge_instructions.title
   - :path: section:discharge_instructions.text
+  - :path: section:discharge_instructions.emptyReason
   - :path: section:medical_devices.title
   - :path: section:medical_devices.text
+  - :path: section:medical_devices.emptyReason
   - :path: section:medications.title
   - :path: section:medications.text
+  - :path: section:medications.emptyReason
   - :path: section:plan_of_care.title
   - :path: section:plan_of_care.text
+  - :path: section:plan_of_care.emptyReason
   - :path: section:problems.title
   - :path: section:problems.text
+  - :path: section:problems.emptyReason
   - :path: section:procedures.title
   - :path: section:procedures.text
   - :path: section:reason_for_referral.title
   - :path: section:reason_for_referral.text
+  - :path: section:reason_for_referral.emptyReason
   - :path: section:clinical_results.title
   - :path: section:clinical_results.text
+  - :path: section:clinical_results.emptyReason
   - :path: section:social_history.title
   - :path: section:social_history.text
+  - :path: section:social_history.emptyReason
   - :path: section:vital_signs.title
   - :path: section:vital_signs.text
+  - :path: section:vital_signs.emptyReason
 :mandatory_elements:
 - Composition.language
 - Composition.identifier
@@ -334,18 +320,16 @@
 :references:
 - :path: Composition.subject
   :profiles:
-  - http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient|6.1.0
+  - http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient|8.0.1
 - :path: Composition.encounter
   :profiles:
-  - http://hl7.org/fhir/us/core/StructureDefinition/us-core-encounter|6.1.0
+  - http://hl7.org/fhir/us/core/StructureDefinition/us-core-encounter|8.0.1
 - :path: Composition.author
   :profiles:
-  - http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitioner|6.1.0
-  - http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitionerrole|6.1.0
+  - http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitioner|8.0.1
+  - http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitionerrole|8.0.1
   - http://hl7.org/fhir/StructureDefinition/PractitionerRole
-  - http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient|6.1.0
-  - http://hl7.org/fhir/StructureDefinition/Device
-  - http://hl7.org/fhir/StructureDefinition/RelatedPerson
+  - http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient|8.0.1
 - :path: Composition.attester.party
   :profiles:
   - http://hl7.org/fhir/StructureDefinition/Patient|4.0.1
@@ -355,7 +339,7 @@
   - http://hl7.org/fhir/StructureDefinition/Organization|4.0.1
 - :path: Composition.custodian
   :profiles:
-  - http://hl7.org/fhir/us/core/StructureDefinition/us-core-organization|6.1.0
+  - http://hl7.org/fhir/us/core/StructureDefinition/us-core-organization|8.0.1
 - :path: Composition.relatesTo.target[x]
   :profiles:
   - http://hl7.org/fhir/StructureDefinition/Composition|4.0.1
@@ -389,7 +373,7 @@
   - http://hl7.org/fhir/StructureDefinition/Resource|4.0.1
 - :path: Composition.section.entry
   :profiles:
-  - http://hl7.org/fhir/us/pacio-adi/StructureDefinition/ADI-PACPComposition
+  - http://hl7.org/fhir/us/pacio-adi/StructureDefinition/ADI-DocumentReference
 - :path: Composition.section.author
   :profiles:
   - http://hl7.org/fhir/StructureDefinition/Practitioner|4.0.1
@@ -403,7 +387,7 @@
   - http://hl7.org/fhir/StructureDefinition/Resource|4.0.1
 - :path: Composition.section.entry
   :profiles:
-  - http://hl7.org/fhir/us/core/StructureDefinition/us-core-allergyintolerance|6.1.0
+  - http://hl7.org/fhir/us/core/StructureDefinition/us-core-allergyintolerance|8.0.1
 - :path: Composition.section.author
   :profiles:
   - http://hl7.org/fhir/StructureDefinition/Practitioner|4.0.1
@@ -417,9 +401,8 @@
   - http://hl7.org/fhir/StructureDefinition/Resource|4.0.1
 - :path: Composition.section.entry
   :profiles:
-  - http://hl7.org/fhir/us/core/StructureDefinition/us-core-condition-encounter-diagnosis|6.1.0
-  - http://hl7.org/fhir/us/core/StructureDefinition/us-core-condition-problems-health-concerns|6.1.0
-  - http://hl7.org/fhir/us/core/StructureDefinition/us-core-simple-observation|6.1.0
+  - http://hl7.org/fhir/us/core/StructureDefinition/us-core-condition-problems-health-concerns|8.0.1
+  - http://hl7.org/fhir/us/core/StructureDefinition/us-core-simple-observation|8.0.1
 - :path: Composition.section.author
   :profiles:
   - http://hl7.org/fhir/StructureDefinition/Practitioner|4.0.1
@@ -436,6 +419,7 @@
   - http://hl7.org/fhir/StructureDefinition/Observation
   - http://hl7.org/fhir/us/pacio-pfe/StructureDefinition/pfe-use-of-device
   - http://hl7.org/fhir/us/pacio-pfe/StructureDefinition/pfe-narrative-history-of-status
+  - http://hl7.org/fhir/us/core/StructureDefinition/us-core-condition-problems-health-concerns|8.0.1
 - :path: Composition.section.author
   :profiles:
   - http://hl7.org/fhir/StructureDefinition/Practitioner|4.0.1
@@ -449,7 +433,7 @@
   - http://hl7.org/fhir/StructureDefinition/Resource|4.0.1
 - :path: Composition.section.entry
   :profiles:
-  - http://hl7.org/fhir/us/core/StructureDefinition/us-core-immunization|6.1.0
+  - http://hl7.org/fhir/us/core/StructureDefinition/us-core-immunization|8.0.1
 - :path: Composition.section.author
   :profiles:
   - http://hl7.org/fhir/StructureDefinition/Practitioner|4.0.1
@@ -463,8 +447,8 @@
   - http://hl7.org/fhir/StructureDefinition/Resource|4.0.1
 - :path: Composition.section.entry
   :profiles:
-  - http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-note|6.1.0
-  - http://hl7.org/fhir/us/core/StructureDefinition/us-core-documentreference|6.1.0
+  - http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-note|8.0.1
+  - http://hl7.org/fhir/us/core/StructureDefinition/us-core-documentreference|8.0.1
 - :path: Composition.section.author
   :profiles:
   - http://hl7.org/fhir/StructureDefinition/Practitioner|4.0.1
@@ -492,7 +476,9 @@
   - http://hl7.org/fhir/StructureDefinition/Resource|4.0.1
 - :path: Composition.section.entry
   :profiles:
-  - http://hl7.org/fhir/StructureDefinition/List
+  - http://hl7.org/fhir/us/smp/StructureDefinition/smp-medication-list
+  - http://hl7.org/fhir/us/core/StructureDefinition/us-core-medicationrequest|8.0.1
+  - http://hl7.org/fhir/us/core/StructureDefinition/us-core-medication|8.0.1
 - :path: Composition.section.author
   :profiles:
   - http://hl7.org/fhir/StructureDefinition/Practitioner|4.0.1
@@ -506,7 +492,7 @@
   - http://hl7.org/fhir/StructureDefinition/Resource|4.0.1
 - :path: Composition.section.entry
   :profiles:
-  - http://hl7.org/fhir/us/core/StructureDefinition/us-core-careplan|6.1.0
+  - http://hl7.org/fhir/us/core/StructureDefinition/us-core-careplan|8.0.1
 - :path: Composition.section.author
   :profiles:
   - http://hl7.org/fhir/StructureDefinition/Practitioner|4.0.1
@@ -520,9 +506,9 @@
   - http://hl7.org/fhir/StructureDefinition/Resource|4.0.1
 - :path: Composition.section.entry
   :profiles:
-  - http://hl7.org/fhir/us/core/StructureDefinition/us-core-condition-encounter-diagnosis|6.1.0
-  - http://hl7.org/fhir/us/core/StructureDefinition/us-core-condition-problems-health-concerns|6.1.0
-  - http://hl7.org/fhir/us/core/StructureDefinition/us-core-simple-observation|6.1.0
+  - http://hl7.org/fhir/us/core/StructureDefinition/us-core-condition-encounter-diagnosis|8.0.1
+  - http://hl7.org/fhir/us/core/StructureDefinition/us-core-condition-problems-health-concerns|8.0.1
+  - http://hl7.org/fhir/us/core/StructureDefinition/us-core-simple-observation|8.0.1
 - :path: Composition.section.author
   :profiles:
   - http://hl7.org/fhir/StructureDefinition/Practitioner|4.0.1
@@ -536,7 +522,7 @@
   - http://hl7.org/fhir/StructureDefinition/Resource|4.0.1
 - :path: Composition.section.entry
   :profiles:
-  - http://hl7.org/fhir/us/core/StructureDefinition/us-core-procedure
+  - http://hl7.org/fhir/us/core/StructureDefinition/us-core-procedure|8.0.1
 - :path: Composition.section.author
   :profiles:
   - http://hl7.org/fhir/StructureDefinition/Practitioner|4.0.1
@@ -550,13 +536,13 @@
   - http://hl7.org/fhir/StructureDefinition/Resource|4.0.1
 - :path: Composition.section.entry
   :profiles:
-  - http://hl7.org/fhir/us/core/StructureDefinition/us-core-condition-problems-health-concerns|6.1.0
-  - http://hl7.org/fhir/us/core/StructureDefinition/us-core-condition-encounter-diagnosis|6.1.0
-  - http://hl7.org/fhir/us/core/StructureDefinition/us-core-procedure|6.1.0
+  - http://hl7.org/fhir/us/core/StructureDefinition/us-core-condition-problems-health-concerns|8.0.1
+  - http://hl7.org/fhir/us/core/StructureDefinition/us-core-condition-encounter-diagnosis|8.0.1
+  - http://hl7.org/fhir/us/core/StructureDefinition/us-core-procedure|8.0.1
   - http://hl7.org/fhir/StructureDefinition/Observation
   - http://hl7.org/fhir/StructureDefinition/ImmunizationRecommendation
-  - http://hl7.org/fhir/us/ccda/StructureDefinition/Discharge-Summary|2.0.0-ballot
-  - http://hl7.org/fhir/us/core/StructureDefinition/us-core-encounter|6.1.0
+  - http://hl7.org/fhir/us/ccda/StructureDefinition/Discharge-Summary|1.2.0
+  - http://hl7.org/fhir/us/core/StructureDefinition/us-core-encounter|8.0.1
 - :path: Composition.section.author
   :profiles:
   - http://hl7.org/fhir/StructureDefinition/Practitioner|4.0.1
@@ -570,8 +556,8 @@
   - http://hl7.org/fhir/StructureDefinition/Resource|4.0.1
 - :path: Composition.section.entry
   :profiles:
-  - http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-clinical-result|6.1.0
-  - http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-note|6.1.0
+  - http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-clinical-result|8.0.1
+  - http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-note|8.0.1
 - :path: Composition.section.author
   :profiles:
   - http://hl7.org/fhir/StructureDefinition/Practitioner|4.0.1
@@ -585,11 +571,11 @@
   - http://hl7.org/fhir/StructureDefinition/Resource|4.0.1
 - :path: Composition.section.entry
   :profiles:
-  - http://hl7.org/fhir/us/core/StructureDefinition/us-core-simple-observation|6.1.0
-  - http://hl7.org/fhir/us/core/StructureDefinition/us-core-smokingstatus|6.1.0
+  - http://hl7.org/fhir/us/core/StructureDefinition/us-core-simple-observation|8.0.1
+  - http://hl7.org/fhir/us/core/StructureDefinition/us-core-smokingstatus|8.0.1
   - http://hl7.org/fhir/us/pacio-pfe/StructureDefinition/pfe-narrative-history-of-status
-  - http://hl7.org/fhir/us/core/StructureDefinition/us-core-careplan|6.1.0
-  - http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient|6.1.0
+  - http://hl7.org/fhir/us/core/StructureDefinition/us-core-careplan|8.0.1
+  - http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient|8.0.1
 - :path: Composition.section.author
   :profiles:
   - http://hl7.org/fhir/StructureDefinition/Practitioner|4.0.1
@@ -603,10 +589,8 @@
   - http://hl7.org/fhir/StructureDefinition/Resource|4.0.1
 - :path: Composition.section.entry
   :profiles:
-  - http://hl7.org/fhir/us/core/StructureDefinition/us-core-vital-signs|6.1.0
+  - http://hl7.org/fhir/us/core/StructureDefinition/us-core-vital-signs|8.0.1
 :tests:
-- :id: toc_v100_composition_patient_category_search_test
-  :file_name: composition_patient_category_search_test.rb
 - :id: toc_v100_composition_read_test
   :file_name: composition_read_test.rb
 - :id: toc_v100_composition_validation_test

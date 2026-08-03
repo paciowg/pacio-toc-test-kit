@@ -1,9 +1,9 @@
-require 'us_core_test_kit/generator/validation_test_generator'
+require 'pacio_inferno_core/generator/validation_test_generator'
 require_relative 'naming'
 
 module PacioTOCTestKit
   class Generator
-    class ValidationTestGenerator < USCoreTestKit::Generator::ValidationTestGenerator
+    class ValidationTestGenerator < PacioInfernoCore::Generator::ValidationTestGenerator
       class << self
         def generate(ig_metadata, base_output_dir)
           ig_metadata.groups
@@ -13,26 +13,6 @@ module PacioTOCTestKit
 
       def template
         @template ||= File.read(File.join(__dir__, 'templates', 'validation.rb.erb'))
-      end
-
-      def directory_name
-        Naming.snake_case_for_profile(medication_request_metadata || group_metadata)
-      end
-
-      def profile_identifier
-        Naming.snake_case_for_profile(group_metadata)
-      end
-
-      def test_id
-        "#{Naming::SHORT_NAME.downcase}_#{group_metadata.reformatted_version}_#{profile_identifier}_validation_test"
-      end
-
-      def class_name
-        "#{Naming.upper_camel_case_for_profile(group_metadata)}ValidationTest"
-      end
-
-      def module_name
-        "Pacio#{Naming::SHORT_NAME}#{group_metadata.reformatted_version.upcase}"
       end
 
       def generate
